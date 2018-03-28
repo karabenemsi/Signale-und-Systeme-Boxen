@@ -7,6 +7,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
 \usepackage{environ}
+\usepackage{enumitem}
+\usepackage[many]{tcolorbox}
 
 
 % Title Page
@@ -14,119 +16,47 @@
 \author{Florian Lubitz \& Steffen Hecht}
 
 \newcounter{BoxCounter}
-\setcounter{BoxCounter}{10}
+\setcounter{BoxCounter}{0}
+
+
+\newtcolorbox{dbox}[1][]{%
+	enhanced,frame hidden,interior hidden,
+	arc=0pt,outer arc=0pt,borderline={0.4pt}{0pt}{dashed},
+	nobeforeafter, box align=center, before={\stepcounter{BoxCounter}\boxed{\arabic{BoxCounter}}\makebox[.5cm]{}}, after={\vspace{0.5cm}}
+}
+
 \NewEnviron{tbox}{%
-	\stepcounter{BoxCounter}
-	\textbf{\arabic{BoxCounter}}
-	\BODY
+	\begin{dbox}
+		\BODY
+	\end{dbox}
 }
 \NewEnviron{abox}{%
-	\stepcounter{BoxCounter}
-	\textbf{\arabic{BoxCounter}}
+	\begin{dbox}	
 		\begin{align*}
 		\BODY
 		\end{align*}
+	\end{dbox}
+}
+\makeatletter
+\newcommand\numbereq{%
+	\ifmeasuring@
+	\else
+	\refstepcounter{equation}%
+	\fi
+	\tag{\theequation}%
 }
 
 
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
 \begin{document}
-\maketitle
-
-\chapter{1}
-
-\begin{abox}
-v + 134 = 16
-\end{abox}
+	\maketitle
 	
-\begin{abox}
-f_{rd}(r):= \delta_{r}:=rd(r)-r
-\end{abox}
-
-\begin{abox}
-f_{rel}:=\epsilon_{r}:= \frac{\delta_{r}}{r}=\frac{rd(r) -r}{r} \quad\text{ für }\quad r \ne 0
-\end{abox}
-
-\setcounter{BoxCounter}{15}
-\begin{abox}
-|\delta_{r}| \leqslant 2^{e-t} \qquad \text{und} \qquad  |\epsilon_{r}| \leqslant 2^{-t}
-\end{abox}
-
-\begin{abox}
-\epsilon = 2^{-t}
-\end{abox}
-
-\begin{tbox}
-...die entsprechenden Maschinenoperationen, d.h. die Anwendung der jeweiligen Operation auf Zahlen im normierten Gleitpunkzahlenformat nach Def. 1.2
-\end{tbox}
-
-\begin{tbox}
-I) Verknüpfung der Maschinenzahlen mit höherer (ausreichend hoher) Genauigkeit\\
-II) Runden des Ergebnisses auf eine Maschinenzahl
-\end{tbox}
-
-\begin{abox}{20}
-	r \circ _{M}s := rd(r \circ s)
-\end{abox}
-
-\begin{tbox}{21}
-	\begin{align*}
-	r + _{M} s = (1,11)_2 \cdot 2^0 +_{M} (1,10)_2 \cdot 2^2 &= (111)_2 \cdot 2^{-2} + (1,10)_2 \cdot 2^{-2}\\
-	&= (1000,10)_2 \cdot 2^{-2}\\
-	&= (100010)_2 \cdot 2^1\\
-	&= (1,00)_2 \cdot 2^1 = (2)_{10}
-	\end{align*}
-	wohingegen das exakte Ergebnis $ r+s = \frac74 + \frac38= \frac{17}{8}$ ist.\\
-	\begin{align*}
-	\text{Der absolute Rundengsfehler ist also}\\
-	f_{rd} = (r+_M s) - (r + s) = 2 -\frac{17}{8} = -\frac{1}{8}\\
-	\text{und der relative Rundungsfehler ist}\\
-	|f_{rel}| = |\frac{(1 +_M s)-(r+s)}{r+s}| = \frac{\frac18}{\frac{17}{8}} = \frac{1}{17} = 0,0588... \approx 5,88\%\\
-	\text{DAs ist relativ gut, denn der maximale Rundugnfehler bei einer 3-stelligen Mantisse ist} \quad \epsilon =   2^{-3} = 12,5\%
-	\end{align*}
-\end{tbox}
-
-
-\begin{tbox}{23}
-	\begin{align*}
-	r \circ_M s = rd(r \circ s) = (r\circ s)\cdot(1 + \epsilon_0)
-	\end{align*}
-	wobei der realtie Fehler $\epsilon_0$ der Gleitpunktoperation wegen Def. 1.10 stets durh die Maschinengenauigkeit beschränkt ist,
-	\begin{align*}
-	\epsilon_0 := \frac{(r\circ_M s)-(r \circ s)}{r \circ s} = \frac{rd(r \circ s) - (r \circ s)}{r \circ s} \leqslant \epsilon
-	\end{align*}
-\end{tbox}
-
-\begin{abox}{24}
-		\tilde{y} =& \tilde{x} +_M c \\
-		&= (\tilde{x} + c) \cdot (1+ \epsilon_2)\\
-		&= ((a +_M b) + c) \cdot (1+ \epsilon_2)\\
-		&= ((a + b) \cdot (1+ \epsilon_1) + c) \cdot (1+ \epsilon_2)\\
-		&= a + b + c + (a+b)\cdot\epsilon_1 + (a + b +c)\cdot\epsilon_2 + (a+b)\cdot\epsilon_1\epsilon_2
-\end{abox}
-
-\begin{abox}{25}
-	\tilde{y} \overset{\cdot}{=}  a + b + c + (a+b)\cdot\epsilon_1 + (a + b +c)\cdot\epsilon_2
-\end{abox}
-
-\begin{abox}{26}
-	f_{rel}(y) = \frac{\tilde{y} - y}{y} &= \frac{(a+b)\cdot\epsilon_1 + (a + b +c)\cdot\epsilon_2}{a + b + c}\\
-	&= \frac{a+b}{a+b+c}\cdot\epsilon_1 + \epsilon_2
-\end{abox}
-
-\begin{abox}{27}
-	|f_{rel}(y)| &= |\frac{a+b}{a+b+c}\cdot\epsilon_1 + \epsilon_2|\\ &\overset{(D.U.G)}{\leqslant} |\frac{a+b}{a+b+c}|\cdot|\epsilon_1| + |\epsilon_2|
-\end{abox}
-
-\begin{abox}{28}
-	|f_{rel}(y)| \leqslant (1+ | \frac{a+b}{a+b+c}|) \cdot \epsilon = (a+ \frac{1}{|1 + \frac{c}{a+b}|}) \cdot \epsilon
-\end{abox}
-
-\begin{tbox}{29}
-	\begin{align*}
-	c \approx -(a+b)
-	\end{align*}
-	ist. Denn für $c \rightarrow -(a+b)$ ist $ \frac{|a+b|}{|a+b+c|} \rightarrow \infty$ und damit wird auch die obere Schranke von $|f_{rel}(y)|$ beliebig (unendlich) groß. In diesem Fall spricht man von \textbf{Auslöschung}
-\end{tbox}
+	\chapter{1}
+	
+	\begin{tbox}
+	\end{tbox}
 
 
 \end{document}          
