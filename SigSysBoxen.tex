@@ -4,7 +4,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[T2A,T1]{fontenc}
 \usepackage{geometry}
 \usepackage{environ}
 \usepackage{enumitem}
@@ -47,6 +47,8 @@
 	\tag{\theequation}%
 }
 
+% Kyrillische Buchstaben
+\newcommand{\KW}{\mbox{\usefont{T2A}{\rmdefault}{m}{n}\CYRSHCH}}
 
 
 \newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
@@ -204,18 +206,49 @@
 \end{abox}
 
 \begin{abox}
-	\CYRSHCH[k] := \epsilon[k] + \epsilon[-k-1] = 1 \text{für alle} k \in \mathbb{Z}
+	\KW [k] := \epsilon[k] + \epsilon[-k-1] = 1 \text{für alle} k \in \mathbb{Z}
 \end{abox}
 
 \begin{abox}
 	rect_{k_{1}, k_{2}}[k] :) \epsilon[k-k1] - \epsilon[k-k_2-1] = \begin{cases}
 		1, k_1\leqslant k \leqslant k_2
 	\end{cases}
-	\end{abox}
+\end{abox}
 
 \begin{abox}
 	x[k] = q^k \cdot \epsilon[k]
-	\end{abox}
+\end{abox}
+
+\begin{abox}
+	x[k]: 0, ..., 0, x[0] = 1, x[1]=-0.7,x[2]=0.49,x[3]= 0.343, ...
+\end{abox}
+
+\begin{abox}
+	x[k]: 0, ..., 0, x[0] = 1, x[1]=-0.8,x[2]=0.64,x[3]= -0.512, ...
+\end{abox}
+
+\begin{abox}
+	x[k] + y[k] &: x[-\infty] + y[-\infty]  ..., x[0] + y[0], x[1] + y[1], ... , x[\infty] + y[\infty]\\
+	x[k] \cdot y[k] &: x[-\infty] \cdot y[-\infty]  ..., x[0] \cdot y[0], x[1] \cdot y[1], ... , x[\infty] \cdot y[\infty]\\
+	c \cdot x[k] &: c \cdot x[-\infty]  ..., c \cdot x[0], c \cdot x[1], ... , c \cdot x[\infty]\\
+\end{abox}
+
+\begin{abox}
+	S_{k_1,k_2} := \{\overrightarrow{x} \in S|x[k] = 0 \forall k < k_1 \text{oder} k>k_2\}
+\end{abox}
+
+\begin{abox}
+	\overrightarrow{x} &= (0\quad3\quad 2\quad 5\quad 0\quad 0)\\
+	\overrightarrow{y} &= (0\quad 0\quad 2\quad -3\quad 0\quad 2)\\
+	\overrightarrow{x} + \overrightarrow{y} &= (0\quad 3\quad 4\quad 2\quad 0\quad 2)\\
+	\overrightarrow{x} - \overrightarrow{y} &= ( 0\quad 3\quad 0\quad 8\quad 0\quad -2)\\
+	\overrightarrow{x} \cdot \overrightarrow{y} &= (0\quad 0\quad 4\quad -15\quad 0\quad 0)\\
+		c + \overrightarrow{x} &= ( 0\quad 15\quad 10\quad 25\quad 0\quad 0)
+\end{abox}
+
+%TODO Steffen: Boxen 35-38
+
+\setcounter{BoxCounter}{38}
  
  
 		
