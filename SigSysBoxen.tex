@@ -254,7 +254,7 @@
 	\begin{alignat*}{4}
 		& && i = 0 && i = 0 && i = 0\\
 		& && \downarrow && \downarrow && \downarrow\\
-		& x[i] = (&& 3\quad 2\quad 1), \quad y[i] = (&& 1 \quad -1 \quad 2)\text{ bzw.}\quad z[0 - i] = (2 \quad -1 \quad && 1)
+		& x[i] = &&(3\quad 2\quad 1), \quad y[i] = &&(1 \quad -1 \quad 2)\text{ bzw.}\quad z[0 - i] = (2 \quad -1 \quad && \text{ } 1)
 	\end{alignat*}
 \end{tbox}
 
@@ -273,12 +273,16 @@
 	x[k] * y[k] = 3 \delta [k] - \delta [k - 1] + 5 \delta [k - 2] + 3 \delta [k - 3] + 2 \delta [k - 4]
 \end{abox}
 
-\begin{abox}
-	i = -43 (pfeil)\\
-	x[i] &= (-1\quad 3\quad -2) \text{ und}\\
-	i = 19 (pfeil)\\
-	y[i] &= (1\quad -2\quad 4\quad -1) \text{ bzw. } y[-i] = (-1\quad 4\quad -2\quad 1)
-\end{abox}
+\begin{tbox}
+	\begin{alignat*}{2}
+		& &&i = -43\\
+		& &&\text{ }\downarrow\\
+		&x[i]= &&(-1\quad 3\quad -2) \text{ und}\\
+		& &&i = 19\\
+		& &&\downarrow\\
+		& y[i]= &&(1\quad -2\quad 4\quad -1) \text{ bzw. } y[-i] = (-1\quad 4\quad -2\quad 1)
+	\end{alignat*}	
+\end{tbox}
 
 \begin{tbox}
 	$ i = -43$ (pfeil)\\
