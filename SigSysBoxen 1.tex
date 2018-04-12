@@ -1,0 +1,228 @@
+\documentclass[13pt]{scrreprt}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[utf8x]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage{geometry}
+\usepackage{environ}
+\usepackage{enumitem}
+\usepackage[many]{tcolorbox}
+\usepackage{siunitx}
+
+
+% Title Page
+\title{Signale und Systeme Boxen}
+\author{Florian Lubitz \& Steffen Hecht}
+
+\newcounter{BoxCounter}
+\setcounter{BoxCounter}{0}
+
+
+\newtcolorbox{dbox}[1][]{%
+	enhanced,frame hidden,interior hidden,
+	arc=0pt,outer arc=0pt,borderline={0.4pt}{0pt}{dashed},
+	nobeforeafter, box align=center, before={\stepcounter{BoxCounter}\boxed{\arabic{BoxCounter}}\makebox[.5cm]{}}, after={\vspace{0.5cm}}
+}
+
+\NewEnviron{tbox}{%
+	\begin{dbox}
+		\BODY
+	\end{dbox}
+}
+\NewEnviron{abox}{%
+	\begin{dbox}	
+		\begin{align*}
+		\BODY
+		\end{align*}
+	\end{dbox}
+}
+\makeatletter
+\newcommand{\numbereq}{%
+	\ifmeasuring@
+	\else
+	\refstepcounter{equation}%
+	\fi
+	\tag{\theequation}%
+}
+
+% Kyrillische Buchstaben
+\newcommand{\KW}{\mbox{\usefont{T2A}{\rmdefault}{m}{n}\CYRSHCH}}
+
+
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\begin{document}
+	\maketitle
+
+	
+	\chapter{Motivation, Wiederholung und Überblick}
+	\begin{tbox}
+		a
+	\end{tbox}
+	\setcounter{BoxCounter}{5}
+	
+
+	
+	\begin{tbox}
+		\begin{align*}
+		u_1(t) = \SI{15}{\volt}\sin(\pi t + \pi/3) + \SI{60}{\volt}\sin(10\pi t + \pi/3) = 0,5x(t) + 2y(t)
+		\end{align*}
+		und damit $a = 0,5, b=2$ und
+		\begin{align*}
+		u_2(t):= \mathcal{H}\{u_1(t)\} = \mathcal{H}\{0,5x(t) + 2y(t)\} \overset{??}{=}
+		\end{align*}
+	\end{tbox}
+	
+	\chapter{Diskrete Signale}
+		\setcounter{BoxCounter}{10}
+	\begin{tbox}
+		\end{tbox}
+
+	\begin{abox}
+		(b) \quad x[-k] &= \begin{cases}
+			-\frac1k , k /ne 0 \\
+			0, k = 0
+			\end{cases}
+		\\
+			(c)\quad  x[k+k_0] &= x[k+3] = \begin{cases}
+			\frac{1}{k+3} , k /ne -3 \\
+			0, k = -3
+			\end{cases}\\
+			(d)\quad  x[k-k_0] &= x[k-3] = \begin{cases}
+			\frac{1}{k-3} , k /ne 3 \\
+			0, k = 3
+		\end{cases}	
+	\end{abox}
+
+\begin{abox}
+ 	x[k_0 - k] &= x[-(k - k_0)]\\
+ 	&= x[(-k) + k_0]
+\end{abox}
+ 
+\begin{abox}
+ 	\text{mit} \quad x[k_0 -k] = x[3 - k] = \begin{cases}
+ 		\frac{1}{3-k}, k \ne 3\\0 , k = 3
+ 	\end{cases}
+\end{abox}
+ 
+ \begin{tbox}
+ 	\begin{itemize}
+ 		\item 
+
+ 	$x[k]$ heißt \underline{gerades Signal}, falls $x[k] = x[-k] \forall k \in \mathbb{Z}$ gilt.
+ 	
+ 	\item   	$x[k]$ heißt \underline{ungerades Signal}, falls $x[k] = -x[-k] \forall k \in \mathbb{Z}$ gilt.
+ 	
+ 	 	\end{itemize}
+ 	\end{tbox}
+ 
+ \begin{abox}
+ 	x[-k] = \begin{cases}
+ 		\frac{1}{-k} , k \ne 0\\
+ 		0, k = 0
+ 	\end{cases} = \begin{cases}
+ 	-\frac1k , k /ne 0 \\ 0, k = 0 
+ \end{cases}  = -x [k] 
+ \end{abox}
+ 	
+\begin{abox}
+ 	y[-k] = \begin{cases}
+	\frac{1}{(-k)^2} , k \ne 0\\
+	0, k = 0
+\end{cases} = \begin{cases}
+	-\frac{1}{k^2}, k \ne 0 \\
+	0, k = 0 
+\end{cases}  = y [k] 
+ 	\end{abox}
+ 
+ 
+ \begin{tbox}
+ 	\begin{itemize}
+ 		\item  $x[k]$ heißt \underline{kausales Signal}, falls gilt: $x[k] = 0 \forall k < 0$
+ 		\item $x[k]$ heißt \underline{nicht-kausales Signal}, falls gilt $\exists k < 0 : x[k] \ne 0$
+ 		\item $x[k]$ heißt \underline{anti-kausales Signal}, falls $x[-k-1]$ kausal ist, d.h. falls gilt: $x[k] = 0 \forall k \leqslant 0$
+ 	\end{itemize}
+ \end{tbox}
+
+\begin{tbox}
+	\begin{itemize}
+		\item $x[k]$ ist nicht-kausal
+				\item $u[k]$ ist kausal
+						\item $v[k]$ ist anti-kausal
+	\end{itemize}
+\end{tbox}
+
+\begin{abox}
+	\delta[k] := \begin{cases}
+		1 , k = 0\\ 0 , k \ne 0
+	\end{cases}
+\end{abox}
+
+\begin{abox}
+	\epsilon[k] := \begin{cases}
+		1 , k \ge 0\\ 0 , k < 0
+	\end{cases}
+\end{abox}
+
+\begin{abox}
+	\delta[k-k_0] = \begin{cases}
+		1, k = k_0\\ 0, k \ne k_0
+	\end{cases}
+	\\ \text{bzw.} \\
+		\delta[k+k_0] = \begin{cases}
+		1, k \ne -k_0\\ 0, k = -k_0
+	\end{cases}
+\end{abox}
+
+\begin{abox}
+	x[k]\cdot \delta[k-i] &= \begin{cases}
+		x[i], k = i \\ 0, k \ne i
+	\end{cases}\\
+	&= x[i] \cdot \delta[k-i] \numbereq \\
+\text{Siebeigenschaft}
+\end{abox}
+
+
+\begin{abox}
+	x[k] = \sum_{i= -\infty}^{\infty} x[i]\cdot\delta[k-i] \quad \text{für alle} \quad k \in \mathbb{Z}
+\end{abox}
+	
+\begin{abox}
+	x[k] = \sum_{i= -K}^{K} x[i]\cdot\delta[k-i]
+\end{abox}
+
+\begin{abox}
+	u[k] &= \delta[k + 2] + \delta[k + 1] + \delta[k] + \delta[k - 1]\\
+	v[k] &= 2\cdot\delta[k + 3] + \delta[k + 1] - \delta[k - 1] - 2\cdot\delta[k - 3]
+\end{abox}
+
+\begin{abox}
+	sgn[k]:= \epsilon[k] - \epsilon[-k] = \begin{cases}
+		1, k > 0\\0, k=0\\-1, k<0
+	\end{cases}
+\end{abox}
+
+\begin{abox}
+	\KW [k] := \epsilon[k] + \epsilon[-k-1] = 1 \text{für alle} k \in \mathbb{Z}
+\end{abox}
+
+\begin{abox}
+	rect_{k_{1}, k_{2}}[k] :) \epsilon[k-k1] - \epsilon[k-k_2-1] = \begin{cases}
+		1, k_1\leqslant k \leqslant k_2
+	\end{cases}
+	\end{abox}
+
+\begin{abox}
+	x[k] = q^k \cdot \epsilon[k]
+	\end{abox}
+
+30-34 HA
+ 
+ 
+		
+
+
+\end{document}          
