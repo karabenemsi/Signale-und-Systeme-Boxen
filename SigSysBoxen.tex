@@ -377,6 +377,133 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 	\varphi^E_{xy}[\kappa] = x^*[-\kappa] * y[\kappa] \text{ bzw. } \varphi^P_{xy}[\kappa] = \lim\limits_{K \to \infty} \frac{1}{2K+1} x_K^*[-\kappa] * y_K[\kappa]
 \end{abox}
 
+\chapter{Diskrete Systeme}
+
+\setcounter{BoxCounter}{57}
+\begin{abox}
+	Inhalt...
+\end{abox}
+
+\begin{abox}
+	y[k] = \mathcal{H}\{x[k]\}
+\end{abox}
+
+\begin{tbox}
+	\begin{align*}
+		x[k] = x_0 \cdot \delta[k] = \begin{cases}
+		x_0 , k=0 \\ 0, k\ne 0
+		\end{cases}
+	\end{align*}
+	entwickelt sich nun das Guthaben des Sparbuchs wie folgt:
+	
+	zu Beginn: $y[0]= x_0$\\
+	nach 1 Jahr: $y[1] = x_0 + p \cdot x_0 = (1+p)\cdot x_0$
+	nach 2 Jahren: $y[2] = (1+p)x_0 + p\cdot(1+p)\cdot x_0 = (1+p)\cdot(1+p) \cdot x_0 = (1+p)^2 \cdot x_0$\\
+	nach 3 Jahren: $y[3] = ... = (1+p)^3 \cdot x_0$\\
+	nach $i$ Jahren: $y[i] = (1+p)^i \cdot x_0$
+	
+	D.h. das Ausgangssignal ist die kausale Exponentialfolge $y[k] = x_0 \cdot (1+p)^k \cdot \epsilon[k]$
+\end{tbox}
+
+\begin{tbox}
+	\begin{align*}
+	y[k+1] = y[k] \cdot (1+p) + x[k+1] \numbereq
+	\end{align*}
+	Das heißt $y[k+1]$ ergibt sich aus dem verzinsten Guthaben $y[k]$ des vorigen Jahres und zusätzlich den neuen Einzahlungen $x[k+1]$.
+\end{tbox}
+
+\begin{abox}
+	\mathcal{H}\{c \cdot x_1[k] + d\cdot x_2[k]\} = c \cdot \mathcal{H}\{x_1[k]\} + d \cdot \mathcal{H}\{x_2[k]\}
+\end{abox}
+
+\begin{abox}
+	y[0] = x[0] = c\cdot x_1[0] + d \cdot x_2[0] 
+\end{abox}
+
+\begin{abox}
+	y[k+1] &\overset{(3.1)}{=}y[k] \cdot (1+p) + x[k+1]\\
+	&\overset{(I.V)}{=} (cy_1[k] + d\cdot y_2[k])\cdot (1+p) + c \cdot x_1 [k+1] + d\cdot x_2[k+1]\\
+	&= c\cdot (y_1[k] \cdot (1+p) + x_1[k+1]) + d \cdot (y_2[k]\cdot(1+p) + x_2[k+1])\\
+	&\overset{(3.1)}{=} c\cdot y[k+1] + d\cdot y_2[k+1]
+\end{abox}
+
+\begin{abox}
+	\mathcal{H}\{x[k-k_0]\} = y[k-k_0]
+\end{abox}
+
+\begin{abox}
+	z[k_0] = x [k_0-k_0] = x[k_0] = y[0] = y[k_0 - k_0]\\
+	\text{ und } z[k] = 0 = y[k - k_0] \text{ für } k<k_0
+\end{abox}
+
+\begin{abox}
+	z[k+1] &\overset{(3.1)}{=} z[k] \cdot (1+p) + x[k+1-k_0]\\
+	& \overset{(I.V.)}{=} y[k - k_0] \cdot (1+p) + x[k-k_0 + 1]\\
+	& \overset{(3.1)}{=} y[k-k_0 + 1]
+\end{abox}
+
+\begin{tbox}
+	... wenn der Ausgabewert $y[k_0]$ zur Zeit $k_0$ nur von früheren Eingabewerten $x[k] , k\leq k_0$ abhängig ist.
+\end{tbox}
+
+\begin{abox}
+	|x[k]| < C \forall k \Rightarrow |y[k]| < D \forall k
+\end{abox}
+
+%69
+\begin{abox}
+	y[k]= x_0 \cdot (1+p)^k \cdot \epsilon[k] \rightarrow \infty \text{ für }k \rightarrow \infty
+\end{abox}
+
+\begin{tbox}
+	..., wenn der Ausgang $y[k]$ zur Zeit $k$ nur vom Eingang $x[k]$ zur Zeit $k$ abhängt.
+\end{tbox}
+
+\begin{tbox}
+	..., falls $y[k]$ nur von $x[\kappa]$ für $|\kappa - k| \leq L$ abhängt. 
+\end{tbox}
+
+\begin{abox}
+	h[k]:= \mathcal{H}\{\delta[k]\}
+\end{abox}
+
+\begin{abox}
+	y[k] = \mathcal{H}\{x[k]\}
+	 &\overset{(2.6)}{=} \mathcal{H}\left\lbrace  \sum_{i = -\infty}^{\infty}x[i] \cdot \delta[k-i] \right\rbrace  \\
+&=\sum_{i=-\infty}^{\infty} x[i] \mathcal{H}\{\delta[k-i]\}\\
+&=\sum_{i=-\infty}^{\infty} x[i] \cdot h[k-i]\\
+&=x[k] * h[k]
+\end{abox}
+
+\begin{abox}
+	y[k] = x[k] * h[k] \text{ für alle } x[k] \in \mathcal{S}
+\end{abox}
+
+\begin{abox}
+	h[k] := \mathcal{H}\{\delta[k]\} = (1+p)^k \epsilon[k]
+\end{abox}
+
+\begin{abox}
+	y[k] &= h[k] * x[k] = \sum_{i=-\infty}^{\infty}(1+p)^i \epsilon[i] \cdot x[k-i]\\
+	&= \sum_{i=0}^{\infty}(1+p)^i\cdot x[k-i]
+\end{abox}
+
+\begin{abox}
+	y[k] &= \sum_{i=0}^{k}(1+p)^i \cdot x[k-i]
+\end{abox}
+
+\begin{abox}
+	\sum_{y=-\infty}^{\infty} \left|h[i]\right| < \infty
+\end{abox}
+
+\begin{abox}
+	|y[k]| = |h[k] * x[k]| = |\sum_{i=-\infty}^{\infty}h[k]x[k-i]| \overset{DUG}{\leq} \sum_{i=-\infty}^{\infty}|h[i] \cdot x[k-i]|
+	&= \sum_{i=-\infty}^{\infty} |h[i]| \cdot |x[k-i]| < M \sum_{i=-\infty}^{\infty}|h[i]| < M\cdot C < \infty
+\end{abox}
+
+
+
+
 
 
 \end{document}          
