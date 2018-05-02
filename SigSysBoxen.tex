@@ -497,9 +497,93 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 \end{abox}
 
 \begin{abox}
-	|y[k]| = |h[k] * x[k]| = |\sum_{i=-\infty}^{\infty}h[k]x[k-i]| \overset{DUG}{\leq} \sum_{i=-\infty}^{\infty}|h[i] \cdot x[k-i]|
+	|y[k]| &= |h[k] * x[k]| = |\sum_{i=-\infty}^{\infty}h[k]x[k-i]| \overset{DUG}{\leq} \sum_{i=-\infty}^{\infty}|h[i] \cdot x[k-i]|\\
 	&= \sum_{i=-\infty}^{\infty} |h[i]| \cdot |x[k-i]| < M \sum_{i=-\infty}^{\infty}|h[i]| < M\cdot C < \infty
 \end{abox}
+
+\setcounter{BoxCounter}{97}
+
+\begin{abox}
+	\mathcal{Z}\{\alpha x[k] + \beta y[k]\} &\overset{Def.}{=} \sum_{k = -\infty}^{\infty}(\alpha x[k] + \beta y[k]) \cdot z^{-k}\\
+	&= \alpha (\sum_{k = -\infty}^{\infty}x[k]z^{-k}) + \beta (\sum_{k = -\infty}^{\infty}y[k]z^{-k})\\
+	&= \alpha X(z) + \beta Y(z)
+\end{abox}
+
+\begin{abox}
+	\mathcal{Z}\{x[k + k_0]\} &\overset{Def.}{=} \sum_{k = -\infty}^{\infty}x[k + k_0] z^{-k} \underset{(k = k' - k_0)}{\overset{k' = k + k_0}{=}} \sum_{k' = -\infty}^{\infty}\underbrace{x[k'] z^{-k' + k_0}}_{=z^{-k'} \cdot z^{k_0}} \\&= z^{k_0} \cdot \underbrace{\sum_{k' = -\infty}^{\infty}x[k'] z^{-k'}}_{=X(z)} = z^{k_0} \cdot X(z)
+\end{abox}
+
+\begin{abox}
+	\mathcal{Z}\{a^k \cdot x[k]\} \overset{Def.}{=} \sum_{k = -\infty}^{\infty}\underbrace{a^k}_{=(\frac{1}{\alpha})^{-k}} \cdot x[k] \cdot z^{-k} = \sum_{k = -\infty}^{\infty}x[k] \cdot (\frac{z}{\alpha})^-k = X(\frac{z}{\alpha})
+\end{abox}
+
+\begin{abox}
+	\mathcal{Z}\{x[-k]\} = \sum_{k = -\infty}^{\infty}x[-k]z^{-k} \underset{(k = -k')}{\overset{k' = -k}{=}} \sum_{k' = -\infty}^{\infty}x[k']z^{k'} = \sum_{k' = -\infty}^{\infty}x[k'] \cdot (\frac{1}{z})^{-k'} = X(\frac{1}{z})
+\end{abox}
+
+\begin{abox}
+	x[0] = \lim\limits_{z \rightarrow \infty} X(z)
+\end{abox}
+
+\begin{abox}
+	\lim\limits_{k\rightarrow\infty}x[k] = \lim\limits_{z\rightarrow 1}(z - 1) \cdot X(z)
+\end{abox}
+
+\begin{abox}
+	\mathcal{Z}\{\alpha^{k-1} \cdot \epsilon[k-1]\} = z^{-1} \cdot \mathcal{Z}\{\alpha^k \cdot \epsilon[k]\} = z^{-1} \cdot \frac{z}{z - \alpha} = \frac{1}{z - \alpha}
+\end{abox}
+
+\begin{abox}
+	\mathcal{Z}\{A \cdot\alpha^{k-k_0} \cdot\epsilon[k - k_0]\} = A \cdot z^{-k} \cdot \mathcal{Z}\{\alpha^k\epsilon[k]\} = A \cdot z^{-k_0} \cdot \frac{z}{z - \alpha} = \frac{A \cdot z^{-(k_0-1)}}{z - \alpha}
+\end{abox}
+
+\begin{abox}
+	\mathcal{Z}\{k\cdot\alpha^k\cdot\epsilon[k]\} &= -z \cdot \frac{d}{dz}\mathcal{Z}\{\alpha^k\epsilon[k]\} = -z \cdot (\frac{z}{z - \alpha})' \\
+	&= -z \cdot (\frac{1 \cdot (z - \alpha) - z \cdot 1}{(z - \alpha)^2}) = \frac{\alpha\cdot z}{(z - \alpha)^2}
+\end{abox}
+
+\begin{abox}
+	Y(z) = H(z) \cdot X(z)
+\end{abox}
+
+\begin{abox}
+	H(z) = \frac{Y(z)}{X(z)}
+\end{abox}
+
+\begin{abox}
+	h[k] &= (1 + p)^k \cdot \epsilon[k]\\
+	H(z) &= \frac{z}{z - (1 + p)}
+\end{abox}
+
+\begin{abox}
+	y[k + 1] &= y[k] \cdot (1 + p) +  x[k + 1]\\
+	zY(z) &= Y(z) \cdot (1 + p) + zX(z) \Leftrightarrow Y(z)(z - (1 + p)) = zX(z)
+\end{abox}
+
+\begin{abox}
+	H(z) := \frac{Y(z)}{X(z)} = \frac{z}{z - (1 + p)}
+\end{abox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
