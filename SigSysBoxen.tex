@@ -501,11 +501,13 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 	&= \sum_{i=-\infty}^{\infty} |h[i]| \cdot |x[k-i]| < M \sum_{i=-\infty}^{\infty}|h[i]| < M\cdot C < \infty
 \end{abox}
 
+Boxes 80 - 97 missing\\
+
 \setcounter{BoxCounter}{97}
 
 \begin{abox}
-	\mathcal{Z}\{\alpha x[k] + \beta y[k]\} &\overset{Def.}{=} \sum_{k = -\infty}^{\infty}(\alpha x[k] + \beta y[k]) \cdot z^{-k}\\
-	&= \alpha (\sum_{k = -\infty}^{\infty}x[k]z^{-k}) + \beta (\sum_{k = -\infty}^{\infty}y[k]z^{-k})\\
+	\mathcal{Z}\{\alpha x[k] + \beta y[k]\} &\overset{Def.}{=} \sum_{k = -\infty}^{\infty}\left(\alpha x[k] + \beta y[k]\right) \cdot z^{-k}\\
+	&= \alpha \left(\sum_{k = -\infty}^{\infty}x[k]z^{-k}\right) + \beta \left(\sum_{k = -\infty}^{\infty}y[k]z^{-k}\right)\\
 	&= \alpha X(z) + \beta Y(z)
 \end{abox}
 
@@ -514,11 +516,11 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 \end{abox}
 
 \begin{abox}
-	\mathcal{Z}\{a^k \cdot x[k]\} \overset{Def.}{=} \sum_{k = -\infty}^{\infty}\underbrace{a^k}_{=(\frac{1}{\alpha})^{-k}} \cdot x[k] \cdot z^{-k} = \sum_{k = -\infty}^{\infty}x[k] \cdot (\frac{z}{\alpha})^-k = X(\frac{z}{\alpha})
+	\mathcal{Z}\{a^k \cdot x[k]\} \overset{Def.}{=} \sum_{k = -\infty}^{\infty}\underbrace{a^k}_{=(\frac{1}{\alpha})^{-k}} \cdot x[k] \cdot z^{-k} = \sum_{k = -\infty}^{\infty}x[k] \cdot \left(\frac{z}{\alpha}\right)^{-k} = X\left(\frac{z}{\alpha}\right)
 \end{abox}
 
 \begin{abox}
-	\mathcal{Z}\{x[-k]\} = \sum_{k = -\infty}^{\infty}x[-k]z^{-k} \underset{(k = -k')}{\overset{k' = -k}{=}} \sum_{k' = -\infty}^{\infty}x[k']z^{k'} = \sum_{k' = -\infty}^{\infty}x[k'] \cdot (\frac{1}{z})^{-k'} = X(\frac{1}{z})
+	\mathcal{Z}\{x[-k]\} = \sum_{k = -\infty}^{\infty}x[-k]z^{-k} \underset{(k = -k')}{\overset{k' = -k}{=}} \sum_{k' = -\infty}^{\infty}x[k']z^{k'} = \sum_{k' = -\infty}^{\infty}x[k'] \cdot \left(\frac{1}{z}\right)^{-k'} = X\left(\frac{1}{z}\right)
 \end{abox}
 
 \begin{abox}
@@ -538,8 +540,8 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 \end{abox}
 
 \begin{abox}
-	\mathcal{Z}\{k\cdot\alpha^k\cdot\epsilon[k]\} &= -z \cdot \frac{d}{dz}\mathcal{Z}\{\alpha^k\epsilon[k]\} = -z \cdot (\frac{z}{z - \alpha})' \\
-	&= -z \cdot (\frac{1 \cdot (z - \alpha) - z \cdot 1}{(z - \alpha)^2}) = \frac{\alpha\cdot z}{(z - \alpha)^2}
+	\mathcal{Z}\{k\cdot\alpha^k\cdot\epsilon[k]\} &= -z \cdot \frac{d}{dz}\mathcal{Z}\{\alpha^k\epsilon[k]\} = -z \cdot \left(\frac{z}{z - \alpha}\right)' \\
+	&= -z \cdot \left(\frac{1 \cdot (z - \alpha) - z \cdot 1}{(z - \alpha)^2}\right) = \frac{\alpha\cdot z}{(z - \alpha)^2}
 \end{abox}
 
 \begin{abox}
