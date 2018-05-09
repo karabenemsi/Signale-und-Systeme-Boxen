@@ -10,6 +10,7 @@
 \usepackage{enumitem}
 \usepackage[many]{tcolorbox}
 \usepackage{siunitx}
+\usepackage{trfsigns}
 
 
 % Title Page
@@ -52,6 +53,8 @@
 
 
 \newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+\newcommand{\ztrans}{\rotatebox[origin=c]{-90}{$\laplace$}}
 \makeatother
 
 \begin{document}
@@ -559,9 +562,10 @@ Boxes 80 - 97 missing\\
 
 \begin{abox}
 	y[k + 1] &= y[k] \cdot (1 + p) +  x[k + 1]\\
-	zY(z) &= Y(z) \cdot (1 + p) + zX(z) \Leftrightarrow Y(z)(z - (1 + p)) = zX(z)
+	&\ztrans\\
+	Y(z) &= Y(z) \cdot (1 + p) + zX(z) \Leftrightarrow Y(z)(z - (1 + p)) = zX(z)
 \end{abox}
-
+%111
 \begin{abox}
 	H(z) := \frac{Y(z)}{X(z)} = \frac{z}{z - (1 + p)}
 \end{abox}
@@ -571,23 +575,82 @@ Boxes 80 - 97 missing\\
 
 
 
+\begin{abox}
+	x[k] &= x_0 \cdot \epsilon[k]\\
+	&\ztrans\\
+	X(z) &= x_0 \cdot \frac{z}{z-1}
+\end{abox}
+
+\begin{abox}
+	Y(z)= H(z) \cdot X(z) = \frac{z}{z-(a+p)}\cdot x_0 \cdot \frac{z}{z-q} = x_0 \cdot z^2 \cdot \frac{1}{\left(z-\left(a+p\right)\right)\cdot\left(z-1\right)}
+\end{abox}
+
+\begin{abox}
+	\frac{1}{\left(z-\left(a+p\right)\right)\cdot\left(z-1\right)} &= \frac{p^{-1}}{z-(a+p)} - \frac{p^{-1}}{z-1}\\
+\end{abox}
+
+\begin{abox}
+	\frac{p^{-1}}{z-(a+p)} \Laplace p^{-1}(a+p)^{K-1} \epsilon[K-1]
+	\text{ und }\\
+	\frac{p^{-1}}{z-1} \Laplace p^{-1}1^{K-1}\epsilon[K-1] = p^{-1}\epsilon[K-1]
+\end{abox}
+
+\setcounter{BoxCounter}{116}
+% 117
+\begin{abox}
+	\sum_{i=0}^{n}\alpha_i y[k-i] &= \sum_{i=N-M}^{N}\beta_i x[k-i] &(a_0 \ne 0, \beta_{N-M} \ne 0)\\
+	&\ztrans\\
+	\sum_{i=0}^{N}\alpha_i\cdot z^{-i} \cdot Y(z) &= \sum_{i= N-M}^{N} \beta_i \cdot z^{-i} \cdot X(z)\\
+	\Leftrightarrow  Y(z) \cdot \sum_{i=0}^{N}\alpha_i\cdot z^{-i} &= X(z) \cdot \sum_{i= N-M}^{N} \beta_i \cdot z^{-i}
+\end{abox}
+
+\begin{abox}
+	H(z):= \frac{Y(z)}{X(z)} &=\frac{\sum_{i= N-M}^{N} \beta_i \cdot z^{-i}}{\sum_{i=0}^{N}\alpha_i\cdot z^{-i}}\\
+	&=\frac{\sum_{i= N-M}^{N} \beta_i \cdot z^{N-i}}{\sum_{i=0}^{N}\alpha_i\cdot z^{N-i}}\\
+	&= \frac{\beta_{N-M}\cdot z^M + \beta_{N-M+1}\cdot z^{M-1} + ... + \beta_N}{\alpha_0 \cdot z^N + \alpha_1 \cdot z^{N-1} + ... + \alpha_N}
+\end{abox}
+
+\begin{abox}
+	y(k) = \frac{1}{\alpha_0}\left(\sum_{i=N-M}^{N}\beta_ix[k-i] - \sum_{i=1}^{N}\alpha_iy[k-i]\right)
+\end{abox}
 
 
+\begin{abox}
+	h[k] &= 3 \cdot (\frac15)^k \cdot epsilon[k] + 2 \cdot (\frac12)^k \cdot \epsilon[k]\\
+	&\ztrans\\
+	H(z) &= 3\cdot \frac{z}{z-\frac15} + 2 \cdot \frac{z}{z-\frac12} = \frac{15z}{5z-1} + \frac{4z}{2z-1}\\	
+	&= \frac{15z(2z-1) + 4z(5z-1)}{(5z-1)(2z-1)} = \frac{50z^2 - 19z}{10z^2 - 7z +1}
+\end{abox}
 
+\begin{abox}
+	\alpha_0 = a_2 = 10, \alpha_1 = -7, \alpha_1 = 1 \text{ und } \beta_0=50,\beta_1=-19,\beta_2=0
+\end{abox}
 
+\begin{abox}
+	10y[k]-7y[k-1]+1y[k-2] = 50x[k]-19x[k-1] \text{ bzw. äquivalent }\\
+	y[k]=\frac{1}{10}\cdot  \left(50x[k]-19x[k-1]+7y[k-1]-y[k-2]\right)
+\end{abox}
 
+\begin{abox}
+	h[k] &= 3 \cdot 5^{-(k+2)}\epsilon[k+2] + 2 \cdot 2^{-k} \epsilon[k]\\
+	&\ztrans\\
+	H(z)&= 3 \cdot z^2 \frac{z}{z-\frac15} + 2 \cdot \frac{z}{z-\frac12}\\ &= \frac{15z^3}{5z-1}+\frac{4z}{2z-1} = \frac{30z^4 - 15z^3 + 20z^2 - 4z}{10z^2 - 7z + 1}\\ &(\Rightarrow M=4, N=2)
+\end{abox}
 
+\begin{abox}
+	\alpha_0=a_{2-0}=10, \alpha_1 = -7, \alpha_2 = 1 \text{ und }\\
+	\beta_{-2} = b_4 =30, \beta_{-1}= 15, \beta_0=20, \beta_1 = -4
+\end{abox}
 
+\begin{abox}
+	10y[k] -7y[k-1] + y[k-2] = 30x[k+2]-15[k+1]+20x[k]-4x[k-1]\\
+	y[k] =\frac{1}{10} \left(30x[k+2]-15[k+1]+20x[k]-4x[k-1]+7y[k-1] - y[k-2]\right)
+\end{abox}
 
-
-
-
-
-
-
-
-
-
+\begin{abox}
+	y[k-2] = \frac{1}{10}\left(30x[k+2]-15[k-1]+20x[k-2]-4x[k-3]+7y[k-3] - y[k-4]\right)
+\end{abox}
+	
 
 
 
