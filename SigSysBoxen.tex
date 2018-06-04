@@ -60,6 +60,9 @@
 
 \newcommand{\ztrans}{\rotatebox[origin=c]{-90}{$\laplace$}}
 \newcommand{\ztransrueck}{\rotatebox[origin=c]{90}{$\laplace$}}
+\newcommand{\rect}{\text{rect}}
+\newcommand{\ramp}{\text{ramp}}
+\newcommand{\sramp}{\text{sramp}}
 \makeatother
 
 \begin{document}
@@ -923,6 +926,76 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 \begin{abox}
 	Inhalt...
 \end{abox}
+
+\setcounter{BoxCounter}{170}
+
+\begin{abox}
+	 \int_{-\infty}^{t} \epsilon(\tau)d\tau= \begin{cases}
+	 	0 &, t\leq 0\\
+	 	\int_{0}^{1}1d\tau=[\tau]_0^t = t &,t>0
+	 \end{cases} \quad = t\cdot \epsilon(t) =: ramp(t)
+\end{abox}
+
+\begin{abox}
+	\int_{-\infty}^{t}\delta(\tau)d\tau = \epsilon(t)
+\end{abox}
+
+\begin{abox}
+	\delta(t):= \frac{d}{dt}\epsilon(t) &= \lim\limits_{T \to 0} \frac1T \text{rect}(\frac{t}{T})
+	&= \lim\limits_{T \to 0} \frac{1}{T} \text{tri}(\frac{t}{T}) = 
+	\lim\limits_{T \to 0} \frac2T \text{si}(s\pi\frac{t}{T})
+\end{abox}
+
+\begin{tbox}
+ \begin{enumerate}[label=\Roman*)]
+ 	\item $x(\tau) \cdot \delta(\tau - t) = x(t) \cdot \delta(\tau - t)$
+ 	\item $\int_{-\infty}^{\infty}\delta(\tau - t)d\tau = 1$
+ 	\item $x(t) = \int_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau$ für alle $ t \in \mathbb{R}$
+ \end{enumerate}
+\end{tbox}
+
+\begin{abox}
+	\int_{-\infty}^{\infty}\delta(\tau - t)d\tau = \int_{-\infty}^{\infty}\delta(\lambda)d\lambda = \epsilon(\infty) = 1
+\end{abox}
+
+
+\begin{abox}
+	\int_{-\infty}^{\infty}x(\tau)\delta(t  - \tau) d \tau &= 	\int_{-\infty}^{\infty}x(\tau)\delta(\tau - t) d \tau \overset{(I)}{=}	\int_{-\infty}^{\infty}x(t)\delta(\tau -t) d \tau \\
+	&= x(t)	\int_{-\infty}^{\infty}\delta(\tau - t) d \tau \overset{(II)}{=} x(t) \cdot 1 = x(t)
+\end{abox}
+
+\begin{abox}
+	(x * y) (t) := 	\int_{-\infty}^{\infty}x(\tau)y(t  - \tau) d \tau
+\end{abox}
+
+\begin{tbox}
+	a) \begin{align*}\epsilon(t) * \epsilon(t) = \int_{-\infty}^{\infty}\epsilon(\tau)\epsilon(t  - \tau) d \tau = 
+	\int_{0}^{\infty}\epsilon(t  - \tau) d \tau = 	\int_{0}^{t}1 \cdot d\tau \overset{\lambda := t-\tau}{=}\\
+		-\int_{t}^{-\infty}\epsilon(\lambda) d \lambda = 
+			\int_{-\infty}^{0}\epsilon(\lambda) d \lambda \overset{(42)}{=} t\epsilon(t) = \text{ramp}(t)\end{align*}
+	b) \begin{align*}
+	\text{rect}(t) * \epsilon(t) &= 	\int_{-\infty}^{\infty}\rect(\tau)\epsilon(t  - \tau) d \tau \\&= 
+		\int_{-0,5}^{0,5}\epsilon(t  - \tau) d \tau \overset{\lambda := t-\tau}{=}
+		-\int_{t-(-0,5)}^{t-0,5}\epsilon(\lambda) d \lambda = 
+		-\int_{t-0,5)}^{t+0,5}\epsilon(\lambda) d \lambda\\ &\overset{(4.2)}{=}[\lambda\epsilon(\lambda)]_{t-0,5}^{t+0,5}
+		= \ramp(t+0,5) - \ramp(t-0,5)\\
+		&= \begin{cases}
+		0 &, t \leq -0,5\\
+		t+0,5 &, -0,5 \leq t \leq 0,5\\
+		1 &, t \geq 0,5
+		\end{cases} =: \sramp
+		\end{align*}
+\end{tbox}
+
+\begin{tbox}
+	c) \begin{align*}
+		\rect(t) * \epsilon(t) &= (\epsilon(t+0,5) - \epsilon(t-0,5)) * \epsilon(t)\\
+		 &\overset{(III)}{=}\epsilon(t +0,5) * \epsilon(t) - \epsilon(t-0,5) * \epsilon(t)\\
+		 &\overset{(VI.a)}{=} \ramp(t + 0,5) - \ramp( t - 0,5) = sramp(t)
+	\end{align*}
+\end{tbox}
+
+
 
 
 
