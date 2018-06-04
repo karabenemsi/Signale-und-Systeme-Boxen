@@ -1,16 +1,19 @@
 \documentclass[parskip=half]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage[utf8x]{inputenc}
-\usepackage[T2A,T1]{fontenc}
 \usepackage{geometry}
 \usepackage{environ}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage[many]{tcolorbox}
 \usepackage{siunitx}
 \usepackage{trfsigns}
+\usepackage{graphics}
+\graphicspath{{Bilder/}}
+\sisetup{locale=DE}
 
 
 % Title Page
@@ -24,16 +27,17 @@
 \newtcolorbox{dbox}[1][]{%
 	enhanced,frame hidden,interior hidden,
 	arc=0pt,outer arc=0pt,borderline={0.4pt}{0pt}{dashed},
-	nobeforeafter, box align=center, before={\stepcounter{BoxCounter}\boxed{\arabic{BoxCounter}}\makebox[.5cm]{}}, after={\vspace{0.5cm}}
+	nobeforeafter, box align=center, before={\stepcounter{BoxCounter}\boxed{\arabic{BoxCounter}}\makebox[.5cm]{}}, 
+	after={\vspace{0.5cm}}, #1
 }
 
 \NewEnviron{tbox}{%
-	\begin{dbox}
+	\begin{dbox}[width=\textwidth]
 		\BODY
 	\end{dbox}
 }
 \NewEnviron{abox}{%
-	\begin{dbox}	
+	\begin{dbox}[width=\textwidth]	
 		\begin{align*}
 		\BODY
 		\end{align*}
@@ -66,10 +70,37 @@
 	\begin{tbox}
 		a
 	\end{tbox}
-	\setcounter{BoxCounter}{5}
-	
 
-	
+	\begin{abox}
+		\underline{U}_1 &= U_1 \angle \varphi_1 = \frac{30}{\sqrt{2}} \angle \frac{\pi}{3}\\
+		\underline{Z}_R &= R = 1000\\
+		\underline{Z}_C &= \frac{1}{j \omega C} = \frac{1}{sC} = \frac{1000}{s}
+	\end{abox}
+
+	\begin{abox}
+		H(s) := \frac{\underline{U}_2}{\underline{U}_1} = \frac{\underline{Z}_C}{\underline{Z}_R + \underline{Z}_C} = \frac{\frac{1}{sC}}{R + \frac{1}{sC}} = \frac{1}{1 + sRC} = \frac{1}{1 + s}
+	\end{abox}
+
+	\begin{abox}
+		\left|H(j\omega)\right| &= \left|\frac{1}{1 + j\omega RC}\right| = \frac{1}{\left|1 + j\omega RC\right|} = \frac{1}{\sqrt{1^2 + (\omega RC)^2}} = \frac{1}{\sqrt{1 + \omega^2}}\\
+		\sphericalangle H(j\omega) &= \sphericalangle \frac{1}{1 + j\omega RC} = \sphericalangle \frac{1 - j \omega RC}{1 + (\omega RC)^2} = \arctan\left(\frac{\frac{-\omega RC}{1 + (\omega RC)^2}}{\frac{1}{1 + (\omega RC)^2}}\right)\\
+		&= \arctan(\omega RC) = -\arctan(\omega)\\
+		\underline{U}_2 &= H(s) \cdot \underline{U}_1 = \left|H(j\omega)\right| \cdot \left|\underline{U}_1\right| \angle\varphi_1 \sphericalangle H(j\omega)\\
+		&= \frac{1}{\sqrt{1 + \omega^2}} \cdot \left|\underline{U}_1\right| \angle (\frac{\pi}{3} - \arctan(\omega))
+	\end{abox}
+
+	\begin{abox}
+		a) \quad\underline{U}_2 &= \frac{1}{\sqrt{1 + (2\pi \cdot 0,5)^2}} \cdot 21.2 \angle \frac{\pi}{3} - \arctan(2\pi \cdot 0,5) \approx 6,43\angle -0,21\\
+		&\Rightarrow u_2(t) = 6,43 \cdot\sqrt{2} \cdot \sin(2\pi \cdot 0,5 \cdot t - 0,21) \approx \SI{9,09}{\volt} \cdot \sin(\pi t - 0,21)\\
+		b) \quad\underline{U}_2 &\approx 0,67\angle -0,49 \Rightarrow u_2(t) \approx \SI{0,95}{\volt} \cdot \sin(10\pi t - 0,49)\\
+		c) \quad\underline{U}_2 &\approx 0,0067\angle -0,523 \Rightarrow u_2(t) \approx \SI{9,55}{\milli\volt} \cdot \sin(100\pi t - 0,523)
+	\end{abox}
+
+	\begin{abox}
+		&\text{Für}\quad x(t) = \SI{30}{\volt}\sin(\pi t + \pi / 3)\quad \text{ist}\quad \mathcal{H}\{x(t)\} = \SI{9,09}{\volt}\sin(\pi t - 0,21)\\
+		&\text{Für}\quad y(t) = \SI{30}{\volt}\sin(10\pi t + \pi / 3)\quad \text{ist}\quad \mathcal{H}\{y(t)\} = \SI{0,95}{\volt}\sin(10\pi t - 0,49)
+	\end{abox}
+		
 	\begin{tbox}
 		\begin{align*}
 		u_1(t) = \SI{15}{\volt}\sin(\pi t + \pi/3) + \SI{60}{\volt}\sin(10\pi t + \pi/3) = 0,5x(t) + 2y(t)
@@ -79,10 +110,31 @@
 		u_2(t):= \mathcal{H}\{u_1(t)\} = \mathcal{H}\{0,5x(t) + 2y(t)\} \overset{??}{=}
 		\end{align*}
 	\end{tbox}
+
+	\begin{abox}
+		&\mathcal{H}\{ax(t) + by(t) + cz(t)\} = \mathcal{H}\{ax(t) + 1 \cdot (by(t) + cz(t)\}\\
+		&\overset{(??)}{=} a\mathcal{H}\{x(t)\} + 1 \cdot \mathcal{H}\{by(t) + cz(t)\} \overset{(??)}{=} a\mathcal{H}\{x(t)\} + b\mathcal{H}\{y(t)\} + c\mathcal{H}\{z(t)\}
+	\end{abox}
+
+	\begin{abox}
+		x[-\infty],\dots,x[-3],x[-2],x[-1],x[0],x[1],x[2],x[3],\dots,x[\infty]
+	\end{abox}
+
+	\begin{tbox}
+		\includegraphics[width=\textwidth]{Box9}
+	\end{tbox}
+
+	\begin{tbox}
+		\begin{itemize}
+			\item $x[-k]$ die \underline{Spiegelung} von $x[k]$ an der Signalpegel-Achse
+			\item  $x[k + k_0]$ die \underline{Verschiebung von $x[k]$ um $k_0$ nach links}
+			\item  $x[k - k_0]$ die \underline{Verschiebung von $x[k]$ um $k_0$ nach rechts}
+		\end{itemize}
+	\end{tbox}
 	
 	\chapter{Diskrete Signale}
 		\setcounter{BoxCounter}{10}
-	\begin{tbox}
+		\begin{tbox}
 		\end{tbox}
 
 	\begin{abox}
@@ -289,7 +341,7 @@
 \end{tbox}
 
 \begin{tbox}
-	$ i = -43$ (pfeil)\\
+	$ i = -43$\\
 	\begin{tabular}{c | l c c c c c c c c c | c}
 		k & $x[i]$ & & & & -1 & 3 & -2  & & & & $(x * y)[k]$\\\hline
 		-24 & $y[k - i] =$ & -1 & 4 & -2 & 1 & & & & & & -1\\
@@ -505,9 +557,120 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 	&= \sum_{i=-\infty}^{\infty} |h[i]| \cdot |x[k-i]| < M \sum_{i=-\infty}^{\infty}|h[i]| < M\cdot C < \infty
 \end{abox}
 
-Boxes 80 - 97 missing\\
+\begin{abox}
+	x[k] := sgn(h[-k]) = \begin{cases}
+		1, \quad &h[-k] > 0\\
+		0, \quad &h[-k] = 0\\
+		-1, \quad &h[-k] < 0
+	\end{cases}
+\end{abox}
 
-\setcounter{BoxCounter}{97}
+\begin{abox}
+	x[k] \cdot h[-k] = sgn(h[-k]) \cdot h[-k] = \left|h[-k]\right| \ge 0
+\end{abox}
+
+\begin{abox}
+	\left|x[0]\right| = \left|(x \cdot h)[0]\right| = \left|\sum_{i = -\infty}^{\infty}x[i] \cdot h[-i]\right| = \sum_{i = -\infty}^{\infty}\left|h[-i]\right| = \sum_{i = -\infty}^{\infty}\left|h[i]\right| = \infty
+\end{abox}
+
+\begin{abox}
+	\sum_{i = -\infty}^{\infty}\left|h[i]\right| = \sum_{i = -\infty}^{\infty}(1 + p)^i \cdot \epsilon[i] = \sum_{i = 0}^{\infty}(1 + p)^i
+\end{abox}
+
+\begin{abox}
+	\left|1 + p\right| < 1\quad\text{bzw. äquivalent für}\quad -2 < p < 0
+\end{abox}
+
+\begin{abox}
+	h[k] = 0, \quad\forall k < 0
+\end{abox}
+
+\begin{abox}
+	y[k] = h[k] \ast x[k] = \sum_{i = -\infty}^{\infty}h[i] \cdot x[k-i] = \sum_{i = 0}^{\infty}h[i] \cdot x[k-i]
+\end{abox}
+
+\begin{tbox}
+	\underline{Lösung:} Folgendes Blockschaltbild realisiert die Rekursion $ y[k + 1] = y[k] \cdot (1 + p) + x[k + 1] $ von (3.1) auf Seite 40: $ y[k] = y[k - 1] \cdot (1 + p) + x[k] $
+	
+	Hier tikz einfügen!
+\end{tbox}
+
+\begin{abox}
+	y[k] = h[k] \ast x[k] = \sum_{i = -\infty}^{\infty}h[i] \cdot x[k - i] = \sum_{i = 0}^{n}\beta i \cdot x[k - i]
+\end{abox}
+
+\begin{abox}
+	y[k] = \frac{1}{\alpha_0} \cdot \left(\sum_{i = 0}^{N}\beta i \cdot x[k - i] - \sum_{i = 0}^{N}\alpha i \cdot y[k - i]\right)
+\end{abox}
+
+\begin{abox}
+	\vec{v}[k + 1] &= fv(\vec{v}[k], \vec{x}[k])\\
+	\vec{y}[k] &= fy(\vec{v}[k], \vec{x}[k])
+\end{abox}
+
+\begin{tbox}
+	\begin{enumerate*}[label=\Roman*), series = tobecont]
+		\item $ \vec{y}[k_0] = fx(\vec{v}[k_0], \vec{x}[k_0] $
+		\item $ \vec{v}[k_0 + 1] = fv(\vec{v}[k_0], \vec{x}[k_0]) $
+	\end{enumerate*}
+	\begin{enumerate*}[label=\Roman*), resume = tobecont]
+		\item $ \vec{y}[k_0 + 1] = fy(\vec{v}[k_0 + 1], \vec{x}[k_0 + 1]) $
+		\item $ \vec{v}[k_0 + 2] = fv(\vec{v}[k_0 + 1], \vec{x}[k_0 + 1]) $
+	\end{enumerate*}
+	\begin{enumerate*}[label=\Roman*), resume = tobecont]
+		\item $ \vec{y}[k_0 + 2] = \dots $
+	\end{enumerate*}
+\end{tbox}
+
+\begin{abox}
+	\vec{v}[k] : \begin{pmatrix}x[k-1] & x[k-2] & x[k-3] & \dots & x[k - L]\end{pmatrix}
+\end{abox}
+
+\begin{abox}
+	\vec{v}[k + 1] &= 
+	\begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		1 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0\\
+		0 & 0 & 1 & 0
+	\end{pmatrix}
+	\cdot v[k] +
+	\begin{pmatrix}
+		1\\
+		0\\
+		0\\
+		0
+	\end{pmatrix}
+	\cdot x[k]\\
+	y[k] &= \begin{pmatrix}a_1 & a_2 & a_3 & a_4\end{pmatrix} \cdot \vec{v}[k] + (a_0) \cdot x[k]
+\end{abox}
+
+\begin{abox}
+	X(z) := \mathcal{Z}\{x[k]\} := \sum x[k] \cdot z^{-k}
+\end{abox}
+
+\begin{abox}
+	a := \limsup_{h \rightarrow\infty} \sqrt[k]{\left|x[k]\right|}\\
+	b := \frac{1}{\underset{h \rightarrow\infty}{\limsup} \sqrt[k]{\left|x[-k]\right|}}
+\end{abox}
+
+\begin{abox}
+	X^+(z) := \mathcal{Z}\{x[k]\} := \sum_{h = 0}^{\infty}x[k] \cdot z^{-k}
+\end{abox}
+
+\begin{tbox}
+	\begin{alignat*}{2}
+		&a)\quad\mathcal{Z}\{\delta[k]\} &&= \sum_{k = -\infty}^{\infty}\delta[k] \cdot z^{-k} = z^{-0} = 1 \text{ für } z \in \mathbb{C}\\
+		&b)\quad\mathcal{Z}\{\delta[k-i]\} &&= \sum_{k = -\infty}^{\infty}\delta[k-i] \cdot z^{-k} = z^{-i} \text{ für } 0 < \left|z\right| < \infty\\
+		&c)\quad\mathcal{Z}\{\epsilon[k]\} &&= \sum_{k = -\infty}^{\infty}\epsilon[k] \cdot z^{-k}  = \sum_{k = 0}^{\infty}z^{-k} = \sum_{k = 0}^{\infty}\left(\frac{1}{k}\right)^k\\
+		& &&\overset{geom.}{\underset{Reihe}{=}} \frac{1}{1 - \frac{1}{z}} = \frac{z}{z - 1} \text{ für } \left|\frac{1}{z}\right| < 1 \text{ bzw. } \left|z\right| > 1\\
+		&d)\quad\mathcal{Z}\{a^k\cdot\epsilon[k]\} &&= \sum_{k = -\infty}^{\infty}a^k\cdot\epsilon[k]\cdot z^{-k} = \sum_{k = 0}^{\infty}\left(\frac{a}{z}\right)^k = \frac{1}{1 - \frac{a}{z}}\\
+		& &&= \frac{z}{z - a} \text{ für } \left|\frac{a}{z}\right| < 1 \Leftrightarrow \left|z\right| > \left|a\right|\\
+		&e)\quad\mathcal{Z}\{a^k\cdot\epsilon[-k-1]\} &&= \sum_{k = -\infty}^{\infty}-a^k\cdot\epsilon[-k-1]\cdot z^{-k} = -\sum_{k = -\infty}^{-1}a^k \cdot z^{-k}\\
+		& &&= -\sum_{k = 1}^{\infty}a^{-k}\cdot z^k = -\sum_{k = 1}^{\infty}\left(\frac{a}{z}\right)^k = -\frac{z}{a}\cdot \sum_{k = 0}^{\infty}\left(\frac{z}{a}\right)^k = \frac{z}{a} \cdot \frac{1}{1-\frac{z}{a}}\\ 
+		& &&= \frac{z}{z - a} \text{ für } \left|\frac{z}{a}\right| < 1 \Leftrightarrow \left|z\right| < \left|a\right|
+	\end{alignat*}
+\end{tbox}
 
 \begin{abox}
 	\mathcal{Z}\{\alpha x[k] + \beta y[k]\} &\overset{Def.}{=} \sum_{k = -\infty}^{\infty}\left(\alpha x[k] + \beta y[k]\right) \cdot z^{-k}\\
