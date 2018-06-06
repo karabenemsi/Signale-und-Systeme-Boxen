@@ -914,11 +914,132 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 	\end{pmatrix} \lambda_i^{k-v}\epsilon[k-1]
 \end{abox}
 
-	\setcounter{BoxCounter}{146}
+	\setcounter{BoxCounter}{145}
 %146
 \begin{abox}
 	A= \frac{1}{0!}\left(\frac{d}{dz}\right)^0[(z-1) \cdot \frac{z}{z-1}(z+1)]|_{z=1}=\frac{z}{z+1}|_{z=1} = \frac12\\
 		B= \frac{1}{0!}\left(\frac{d}{dz}\right)^0[(z+1) \cdot \frac{z}{z-1}(z+1)]|_{z=-1}=\frac{z}{z-1}|_{z=-1} = \frac12
+\end{abox}
+
+\begin{abox}
+	\frac{A}{z \cdot \alpha} + \frac{B}{z \cdot \beta} &= \frac{\frac{a \cdot \alpha + b}{\alpha - \beta}(z - \beta) + \frac{a \cdot \beta + b}{\beta - \alpha}(z - \alpha)}{(z - a)(z - \beta)}\\
+	&= \frac{z \cdot (a \cdot \alpha + b)-(a \cdot \beta + b)) - \beta(a \cdot \alpha + b) + \alpha(a \cdot \beta + b)}{(\alpha - \beta)(z - \alpha)(z - \beta)}\\
+	&= \frac{z \cdot a \cdot (\alpha - \beta) + b \cdot (\alpha - \beta)}{(\alpha - \beta)(z - \alpha)(z - \beta)} = \frac{a \cdot z + b}{(z - \alpha)(z - \beta)}
+\end{abox}
+
+\begin{abox}
+	A &= \frac{a \cdot \alpha + b}{\alpha - \beta} = \frac{1 \cdot 1 + 0}{1 - (-1)} = \frac{1}{2}
+	B &= \frac{a \cdot \beta + b}{\alpha - \beta} = \frac{1 \cdot (-1) + 0}{-1 - 1)} = \frac{1}{2}
+\end{abox}
+
+\begin{abox}
+	Y(z) = \frac{A}{z - \alpha} + \frac{B}{z - \beta} = \frac{0.5}{z - 1} + \frac{0.5}{z + 1}
+\end{abox}
+
+\begin{abox}
+	\left|\lambda_i\right| < 1 \quad \forall i = 1, \dots , N
+\end{abox}
+
+\begin{abox}
+	y[k] &= y[k - 1] + y[k - 2] + x[k]\\
+	&\ztrans\\
+	Y(z) &= z^{-1} Y(z) + z^{-2} Y(z) + X(z) \Leftrightarrow Y(z) \cdot (1 - z^{-1} - z^{-2}) = X(z)
+\end{abox}
+
+\begin{abox}
+	H(z) = \frac{Y(z)}{X(z)} = \frac{1}{ (1 - z^{-1} - z^{-2})} = \frac{z^2}{z^2 - z - 1}
+\end{abox}
+
+\begin{abox}
+	\lambda_{1 / 2} = \frac{-1 \pm \sqrt{1^2 + 4}}{2 \cdot 1} = \frac{1 \pm \sqrt{5}}{2}
+\end{abox}
+
+\begin{abox}
+	Y(z) = H(z) \cdot X(z) = \frac{z^2}{z^2 - z - 1} \cdot z^{-1} = \frac{z}{z^2 - z - 1} = \frac{z}{(z - \lambda_1)(z - \lambda_2)}
+\end{abox}
+
+\begin{abox}
+	Y(z) = \frac{1z + 0}{(z - \lambda_1)(z - \lambda_2)} = \frac{A}{z - \lambda_1} + \frac{B}{z - \lambda_2}
+\end{abox}
+
+\begin{abox}
+	A &= \frac{a \cdot \alpha + b}{\alpha - \beta} = \frac{\lambda_1}{\lambda_1 - \lambda_2} = \frac{1 + \sqrt{5}}{2\sqrt{5}}\\
+	B &= \frac{a \cdot \beta + b}{\alpha - \beta} = \frac{\lambda_2}{\lambda_2 - \lambda_1} = \frac{1 - \sqrt{5}}{-2\sqrt{5}}
+\end{abox}
+
+\begin{abox}
+	Y(z) &= \frac{A}{z - \lambda_1} + \frac{B}{z - \lambda_2}\\
+	&\ztransrueck\\
+	y[k] &= A \cdot \lambda_1^{k-1} \epsilon[k - 1] +  B \cdot \lambda_2^{k-1} \epsilon[k - 1]\\
+	&= \frac{1 + \sqrt{5}}{2\sqrt{5}} \cdot \left(\frac{1 + \sqrt{5}}{2}\right)^{k -1} \cdot \epsilon[k - 1] +  \frac{1 - \sqrt{5}}{-2\sqrt{5}} - \frac{1 - \sqrt{5}}{-2\sqrt{5}} \cdot \left(\frac{1 + \sqrt{5}}{2}\right)^{k - 1} \cdot \epsilon[k - 1]\\
+	&= \frac{1}{\sqrt{5}}\left(\left(\frac{1 + \sqrt{5}}{2}\right)^k - \left(\frac{1 - \sqrt{5}}{2}\right)^k\right)\epsilon[k - 1]
+\end{abox}
+
+\begin{abox}
+	U(z) &= H_1(z) \cdot X(z) \text{ und}\\
+	Y(z) &= H_2(z) \cdot U(z) = H_2(z) \cdot H_1(z) \cdot X(z)
+\end{abox}
+
+\begin{abox}
+	H(z) &= \frac{Y(z)}{X(z)} = H_1(z) \cdot H_2(z)\\
+	&\ztransrueck\\
+	h[k] &= h_1[k] \ast h_2[k]
+\end{abox}
+
+\begin{abox}
+	V(z) &= H_1(z) \cdot X(z) \text{ und}\\
+	W(z) &= H_2(z) \cdot X(z) \text{ und also } Y(z) = V(z) + W(z) = H_1(z) \cdot X(z) + H_2(z) \cdot X(z) = (H_1(z) + H_2(z)) \cdot X(z)
+\end{abox}
+
+\begin{abox}
+	H(z) &:= \frac{Y(z)}{X(z)} = H_1(z) + H_2(z)\\
+	&\ztransrueck\\
+	h[k] &= h_1[k] + h_2[k]
+\end{abox}
+
+\begin{abox}
+	V(z) &= X(z) - W(z) \text{ und } W(z) = H_2(z) \cdot Y(z) \text{ und}\\
+	Y(z) &= V(z) \cdot H_1(z) = H_1(z) \cdot (X(z) \cdot H_2(z) \cdot Y(z))\\
+	&= H_1(z) \cdot X(z) - H_1(z) \cdot H_2(z) \cdot Y(z)\\
+	&\Leftrightarrow Y(z) \cdot (1 + H_1(z) + H_2(z)) = H_1(z) \cdot X(z)
+\end{abox}
+
+\begin{abox}
+	H(z) = \frac{Y(z)}{X(z)} = \frac{H_1(z)}{1 + H_1(z) + H_2(z)}
+\end{abox}
+
+\begin{abox}
+	H(z) = H_1(z) \cdot H_2(z) = \frac{(z + 3)(z - 1)}{(z^2 - 1)(z + 3)(z - 1)} = \frac{1}{(z - 1)^2} = \frac{1}{z^2 - 2z - 1}
+\end{abox}
+
+\begin{abox}
+	y[k] - 2y[k - 1] + y[k - 2] = x[k - 2]
+\end{abox}
+
+\begin{abox}
+	y[k] = 2y[k] - y[k - 2] + x[k - 2]
+\end{abox}
+
+\begin{abox}
+	H(z) &= H_1(z) + H_2(z) = \frac{z + 3}{z^2 - 1} + \frac{z + 1}{(z + 3)(z - 1)} = \frac{(z + 3)^2 + (z + 1)^2}{(z^2 - 1)(z + 3)}\\
+	&= \frac{2z^2 + 8z + 10}{z^3 + 3z^2 - z - 3} \text{ (Systemfunktion)}\\
+	y[k] &+ 3y[k - 1] - y[k - 2] - 3y[k - 3] = 2x[k - 1] + 8x[k - 2] + 10x[k - 3] \text{ (DLG)}\\
+	y[k] &= 2x[k - 1] + 8x[k - 2] + 10x[k - 3] - 3y[k - 1] + y[k - 2] + 3y[k - 3] \text{ (Alg.)}
+\end{abox}
+
+\begin{abox}
+	H(z) &= \frac{H_1(z)}{1 + H_1(z) + H_2(z)} = \frac{\frac{z + 3}{z^2 - 1}}{1 + \frac{(z + 3)(z + 1)}{(z^2 - 1)(z + 3)(z - 1)}} = \frac{\frac{z + 3}{z^2 - 1}}{\frac{(z - 1)^2 + 1}{(z - 1)^2}} = \frac{\frac{z + 3}{z + 1}}{\frac{z^2 - 2z + 2}{z - 1}}\\
+	&= \frac{(z + 3)(z - 1)}{(z + 1)(z^2 - 2z + 2)} = \frac{z^2 + 2z - 3}{z^3 - z^2 + 2} \text{ (Systemfunktion)}\\
+	y[k] &- y[k - 1] + 2y[k - 3] = x[k - 1] + 2x[k - 2] + 3x[k - 3] \text{ (DLG)}\\
+	y[k] &= x[k - 1] + 2x[k - 2] - 3x[k - 3] + y[k - 1] - 2y[k - 3] \text{ (Alg.)}
+\end{abox}
+
+\begin{abox}
+	\int_{a}^{b}f(t)dt := \lim\limits_{n \to \infty}\sum_{i = 0}^{n - 1}f(a + i \cdot \varDelta t_n)
+\end{abox}
+
+\begin{abox}
+	\varDelta t_n = \frac{b - a}{n}
 \end{abox}
 
 
@@ -1007,7 +1128,7 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 
 \begin{abox}
 	\|\rect(t-\tau)\|^2 &= \int_{-\infty}^{\infty}\rect^2(t-\tau)dt \overset{\lambda = t-\tau}{=} \int_{-\infty}^{\infty}\rect(\lambda)d\lambda\overset{(Def.rect)}{=} 1\\
-		\cos\Phi &= \frac{\left\langle \rect(t-\tau_1), \rect(t-\tau_2)\right\rangle}{\left\|\rect(t-\tau_1)|\right\| \cdot \left\|\recr(t-\tau_2)\right\|} \\
+		\cos\Phi &= \frac{\langle \rect(t-\tau_1), \rect(t-\tau_2)\rangle}{\|\rect(t-\tau_1)\| \cdot \|\rect(t-\tau_2)\|} \\
 		&=
 		 \frac{\int_{-\infty}^{\infty}\rect(\lambda)\cdot \rect(\lambda-((\tau_2 - \tau_1)))d\lambda}{1 \cdot 1}\\
 		 &\overset{(symm rect)}{=} int_{-\infty}^{\infty}\rect(\lambda)\rect((\tau_2 - \tau_1) - \lambda) d\lambda\\
