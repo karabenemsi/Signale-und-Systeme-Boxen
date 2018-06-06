@@ -63,6 +63,7 @@
 \newcommand{\rect}{\text{rect}}
 \newcommand{\ramp}{\text{ramp}}
 \newcommand{\sramp}{\text{sramp}}
+\newcommand{\tri}{\text{tri}}
 \makeatother
 
 \begin{document}
@@ -994,6 +995,38 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 		 &\overset{(VI.a)}{=} \ramp(t + 0,5) - \ramp( t - 0,5) = sramp(t)
 	\end{align*}
 \end{tbox}
+
+\begin{abox}
+	\cos\Phi = \frac{\left\langle x(t), y(t)\right\rangle}{\left\|x(t)|\right\| \cdot \left\|y(t)\right\|}
+\end{abox}
+
+\begin{abox}
+	E_{\delta(t-\tau)} = \left\|\delta(t-\tau)\right\|^2 = \int_{-\infty}^{\infty} \delta^2(t-\tau)dt = \lim\limits_{T \to \infty} \int_{\tau -\frac{T}{2}}^{\tau +\frac{T}{2}}\frac{a}{T^2}dt = \lim\limits_{T \to \infty} \frac{a}{T} = \infty\\
+		\cos\Phi = \frac{\left\langle \delta(t-\tau_1), \delta(t-\tau_2)\right\rangle}{\left\|\delta(t-\tau_1)|\right\| \cdot \left\|\delta(t-\tau_2)\right\|} = \frac{\int_{-\infty}^{\infty}\delta(t-\tau_1)\cdot \delta(t-\tau_2)dt}{\infty \cdot \infty} = \frac{\int_{-\infty}^{\infty}0dt}{\infty}=0
+\end{abox}
+
+\begin{abox}
+	\|\rect(t-\tau)\|^2 &= \int_{-\infty}^{\infty}\rect^2(t-\tau)dt \overset{\lambda = t-\tau}{=} \int_{-\infty}^{\infty}\rect(\lambda)d\lambda\overset{(Def.rect)}{=} 1\\
+		\cos\Phi &= \frac{\left\langle \rect(t-\tau_1), \rect(t-\tau_2)\right\rangle}{\left\|\rect(t-\tau_1)|\right\| \cdot \left\|\recr(t-\tau_2)\right\|} \\
+		&=
+		 \frac{\int_{-\infty}^{\infty}\rect(\lambda)\cdot \rect(\lambda-((\tau_2 - \tau_1)))d\lambda}{1 \cdot 1}\\
+		 &\overset{(symm rect)}{=} int_{-\infty}^{\infty}\rect(\lambda)\rect((\tau_2 - \tau_1) - \lambda) d\lambda\\
+		 &\overset{(Def. Faltung)}{=} (\rect * \rect)(\tau_2 - \tau_1)\\
+		 &\overset{S91, Bsp. d}{=} \tri(\tau_2 -  \tau_1)\\
+		 \implies \Phi &= \arccos \tri(\tau_2 - \tau_1)
+\end{abox}
+
+\begin{abox}
+	\langle &\sin(n\omega_0t),\sin(m\omega_0t)\rangle_T = \int_{-\frac{T}{2}}^{\frac{T}{2}}\frac{1}{2j}(e^{jn\omega_0t}-e^{-jn\omega_0t}) \cdot \frac{1}{2j}(e^{jm\omega_0t}-e^{-jm\omega_0t}) dt\\
+	&=-\frac{1}{4}\int_{-\frac{T}{2}}^{\frac{T}{2}}e^{j(n+m)\omega_0t}-e^{j(m-n)\omega_0t}-e^{j(n.m)\omega_0t}+e^{-j(n+m)\omega_0t}dt\\
+	&\overset{(4.12)}{=}-\frac{T}{4}(\delta[n+m] - \delta[m-n] - \delta[n-m] - \delta[-(n+m)])\\
+	&= \frac{T}{4}\cdot(2\delta[n-m] - 2\delta[n+m]) = \frac{T}{2}\delta[n-m] = \begin{cases}
+		0 &,n\ne m\\
+		\frac{T}{2}&, n = m \ne 0
+	\end{cases}
+\end{abox}
+
+
 
 
 
