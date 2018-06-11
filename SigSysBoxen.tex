@@ -141,21 +141,23 @@
 		\begin{tbox}
 		\end{tbox}
 
-	\begin{abox}
-		(b) \quad x[-k] &= \begin{cases}
-			-\frac1k , k /ne 0 \\
-			0, k = 0
+	\begin{tbox}
+		\begin{alignat*}{2}
+			&(b) \quad x[-k] &&= \begin{cases}
+			-\frac1k,\quad k \ne 0 \\
+			0,\quad k = 0
 			\end{cases}
-		\\
-			(c)\quad  x[k+k_0] &= x[k+3] = \begin{cases}
-			\frac{1}{k+3} , k /ne -3 \\
-			0, k = -3
+			\\
+			&(c)\quad  x[k+k_0] = x[k+3] &&= \begin{cases}
+			\frac{1}{k+3}, \quad k \ne -3 \\
+			0, \quad k = -3
 			\end{cases}\\
-			(d)\quad  x[k-k_0] &= x[k-3] = \begin{cases}
-			\frac{1}{k-3} , k /ne 3 \\
-			0, k = 3
-		\end{cases}	
-	\end{abox}
+			&(d)\quad  x[k-k_0] = x[k-3] &&= \begin{cases}
+			\frac{1}{k-3}, \quad k \ne 3 \\
+			0, \quad k = 3
+			\end{cases}
+		\end{alignat*}
+	\end{tbox}
 
 \begin{abox}
  	x[k_0 - k] &= x[-(k - k_0)]\\
@@ -164,86 +166,86 @@
  
 \begin{abox}
  	\text{mit} \quad x[k_0 -k] = x[3 - k] = \begin{cases}
- 		\frac{1}{3-k}, k \ne 3\\0 , k = 3
+ 		\frac{1}{3-k}, \quad k \ne 3\\0 , \quad k = 3
  	\end{cases}
 \end{abox}
  
  \begin{tbox}
  	\begin{itemize}
- 		\item 
-
- 	$x[k]$ heißt \underline{gerades Signal}, falls $x[k] = x[-k] \forall k \in \mathbb{Z}$ gilt.
- 	
- 	\item   	$x[k]$ heißt \underline{ungerades Signal}, falls $x[k] = -x[-k] \forall k \in \mathbb{Z}$ gilt.
- 	
+ 		\item $x[k]$ heißt \underline{gerades Signal}, falls $x[k] = x[-k]$ $\forall k \in \mathbb{Z}$ gilt.
+ 		\item $x[k]$ heißt \underline{ungerades Signal}, falls $x[k] = -x[-k]$ $\forall k \in \mathbb{Z}$ gilt.
  	 	\end{itemize}
  	\end{tbox}
  
  \begin{abox}
  	x[-k] = \begin{cases}
- 		\frac{1}{-k} , k \ne 0\\
- 		0, k = 0
+ 		\frac{1}{-k}, \quad k \ne 0\\
+ 		0, \quad k = 0
  	\end{cases} = \begin{cases}
- 	-\frac1k , k /ne 0 \\ 0, k = 0 
+ 	-\frac1k, \quad k \ne 0 \\ 
+ 	0, \quad k = 0 
  \end{cases}  = -x [k] 
  \end{abox}
  	
 \begin{abox}
  	y[-k] = \begin{cases}
-	\frac{1}{(-k)^2} , k \ne 0\\
-	0, k = 0
+	\frac{1}{(-k)^2}, \quad k \ne 0\\
+	0, \quad k = 0
 \end{cases} = \begin{cases}
-	-\frac{1}{k^2}, k \ne 0 \\
-	0, k = 0 
+	-\frac{1}{k^2}, \quad k \ne 0 \\
+	0, \quad k = 0 
 \end{cases}  = y [k] 
  	\end{abox}
  
- 
  \begin{tbox}
  	\begin{itemize}
- 		\item  $x[k]$ heißt \underline{kausales Signal}, falls gilt: $x[k] = 0 \forall k < 0$
+ 		\item  $x[k]$ heißt \underline{kausales Signal}, falls gilt: $x[k] = 0$ $\forall k < 0$
  		\item $x[k]$ heißt \underline{nicht-kausales Signal}, falls gilt $\exists k < 0 : x[k] \ne 0$
- 		\item $x[k]$ heißt \underline{anti-kausales Signal}, falls $x[-k-1]$ kausal ist, d.h. falls gilt: $x[k] = 0 \forall k \leqslant 0$
+ 		\item $x[k]$ heißt \underline{anti-kausales Signal}, falls $x[-k-1]$ kausal ist, d.h. falls gilt: $x[k] = 0$ $\forall k \leqslant 0$
  	\end{itemize}
  \end{tbox}
 
 \begin{tbox}
 	\begin{itemize}
 		\item $x[k]$ ist nicht-kausal
-				\item $u[k]$ ist kausal
-						\item $v[k]$ ist anti-kausal
+		\item $u[k]$ ist kausal
+		\item $v[k]$ ist anti-kausal
 	\end{itemize}
 \end{tbox}
 
 \begin{abox}
 	\delta[k] := \begin{cases}
-		1 , k = 0\\ 0 , k \ne 0
+		1, \quad k = 0\\ 0, \quad k \ne 0
 	\end{cases}
 \end{abox}
 
 \begin{abox}
 	\epsilon[k] := \begin{cases}
-		1 , k \ge 0\\ 0 , k < 0
+		1, \quad k \ge 0\\ 0, \quad k < 0
 	\end{cases}
 \end{abox}
 
-\begin{abox}
-	\delta[k-k_0] = \begin{cases}
-		1, k = k_0\\ 0, k \ne k_0
-	\end{cases}
-	\\ \text{bzw.} \\
+\begin{dbox}[width=0.45\textwidth]
+	\begin{align*}
+		\delta[k-k_0] = \begin{cases}
+		1, \quad k = k_0\\ 0, \quad k \ne k_0
+		\end{cases}
+		\\ \text{bzw.} \\
 		\delta[k+k_0] = \begin{cases}
-		1, k \ne -k_0\\ 0, k = -k_0
-	\end{cases}
-\end{abox}
+		1, \quad k \ne -k_0\\ 0, \quad k = -k_0
+		\end{cases}
+	\end{align*}
+\end{dbox}
 
-\begin{abox}
-	x[k]\cdot \delta[k-i] &= \begin{cases}
-		x[i], k = i \\ 0, k \ne i
-	\end{cases}\\
-	&= x[i] \cdot \delta[k-i] \numbereq \\
-\text{Siebeigenschaft}
-\end{abox}
+\begin{dbox}[width=0.45\textwidth]
+	\begin{align*}
+		x[k]\cdot \delta[k-i] &= \begin{cases}
+		x[i], \quad k = i \\ 0, \quad k \ne i
+		\end{cases}\\
+		&= x[i] \cdot \delta[k-i] \numbereq \\
+		\text{Siebeigenschaft}
+	\end{align*}
+\end{dbox}
 
 
 \begin{abox}
@@ -261,17 +263,17 @@
 
 \begin{abox}
 	sgn[k]:= \epsilon[k] - \epsilon[-k] = \begin{cases}
-		1, k > 0\\0, k=0\\-1, k<0
+		1, \quad k > 0\\0, \quad k=0\\-1, \quad k<0
 	\end{cases}
 \end{abox}
 
 \begin{abox}
-	\KW [k] := \epsilon[k] + \epsilon[-k-1] = 1 \text{für alle} k \in \mathbb{Z}
+	\KW [k] := \epsilon[k] + \epsilon[-k-1] = 1 \text{ für alle } k \in \mathbb{Z}
 \end{abox}
 
 \begin{abox}
-	rect_{k_{1}, k_{2}}[k] :) \epsilon[k-k1] - \epsilon[k-k_2-1] = \begin{cases}
-		1, k_1\leqslant k \leqslant k_2
+	rect_{k_{1}, k_{2}}[k] := \epsilon[k-k1] - \epsilon[k-k_2-1] = \begin{cases}
+		1, \quad k_1\leqslant k \leqslant k_2
 	\end{cases}
 \end{abox}
 
@@ -294,17 +296,19 @@
 \end{abox}
 
 \begin{abox}
-	S_{k_1,k_2} := \{\overrightarrow{x} \in S|x[k] = 0 \forall k < k_1 \text{oder} k>k_2\}
+	S_{k_1,k_2} := \{\overrightarrow{x} \in S|x[k] = 0 \text{ } \forall k < k_1 \text{ oder } k>k_2\}
 \end{abox}
 
-\begin{abox}
-	\overrightarrow{x} &= (0\quad3\quad 2\quad 5\quad 0\quad 0)\\
-	\overrightarrow{y} &= (0\quad 0\quad 2\quad -3\quad 0\quad 2)\\
-	\overrightarrow{x} + \overrightarrow{y} &= (0\quad 3\quad 4\quad 2\quad 0\quad 2)\\
-	\overrightarrow{x} - \overrightarrow{y} &= ( 0\quad 3\quad 0\quad 8\quad 0\quad -2)\\
-	\overrightarrow{x} \cdot \overrightarrow{y} &= (0\quad 0\quad 4\quad -15\quad 0\quad 0)\\
-		c + \overrightarrow{x} &= ( 0\quad 15\quad 10\quad 25\quad 0\quad 0)
-\end{abox}
+\begin{tbox}
+	\begin{alignat*}{6}
+		\overrightarrow{x} &&= (0 \quad & 3 \quad & 2 \quad & 5 \quad & 0 \quad & 0 &)\\
+		\overrightarrow{y} &&= (0 \quad & 0 \quad & 2 \quad & \text{-}3 \quad & 0 \quad & 2 &)\\
+		\overrightarrow{x} + \overrightarrow{y} &&= (0 \quad & 3 \quad & 4 \quad & 2 \quad & 0 \quad & 2 &)\\
+		\overrightarrow{x} - \overrightarrow{y} &&= ( 0 \quad & 3 \quad & 0 \quad & 8 \quad & 0 \quad & \text{-}2 &)\\
+		\overrightarrow{x} \cdot \overrightarrow{y} &&= (0 \quad & 0 \quad & 4 \quad & \text{-}15 \quad & 0 \quad & 0 &)\\
+		c + \overrightarrow{x} &&= ( 0 \quad & 15 \quad & 10 \quad & 25 \quad & 0 \quad & 0 &)
+	\end{alignat*}
+\end{tbox}
 
 \begin{abox}
 	(x * y)[k] := \sum_{i=-\infty}^{\infty} x[i] \cdot y[k - i]
@@ -503,24 +507,23 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 \end{abox}
 
 \begin{tbox}
-	... wenn der Ausgabewert $y[k_0]$ zur Zeit $k_0$ nur von früheren Eingabewerten $x[k] , k\leq k_0$ abhängig ist.
+	Ein System $\mathcal{H}$ heißt \underline{kausal}, wenn der Ausgabewert $y[k_0]$ zur Zeit $k_0$ nur von früheren Eingabewerten $x[k] , k\leq k_0$ abhängig ist.
 \end{tbox}
 
 \begin{abox}
 	|x[k]| < C \forall k \Rightarrow |y[k]| < D \forall k
 \end{abox}
 
-%69
 \begin{abox}
 	y[k]= x_0 \cdot (1+p)^k \cdot \epsilon[k] \rightarrow \infty \text{ für }k \rightarrow \infty
 \end{abox}
 
 \begin{tbox}
-	..., wenn der Ausgang $y[k]$ zur Zeit $k$ nur vom Eingang $x[k]$ zur Zeit $k$ abhängt.
+	Ein System heißt \underline{gedächtnislos}, wenn der Ausgang $y[k]$ zur Zeit $k$ nur vom Eingang $x[k]$ zur Zeit $k$ abhängt.
 \end{tbox}
 
 \begin{tbox}
-	..., falls $y[k]$ nur von $x[\kappa]$ für $|\kappa - k| \leq L$ abhängt. 
+	Dagegen hat ein System ein \underline{Gedächtnis} der Länge $L$, falls $y[k]$ nur von $x[\kappa]$ für $|\kappa - k| \leq L$ abhängt. 
 \end{tbox}
 
 \begin{abox}
@@ -544,8 +547,7 @@ P_x :=  \lim\limits_{K \to \infty}\frac{1}{2K +1}\sum_{i=-K}^{K}|x[i]|^2
 \end{abox}
 
 \begin{abox}
-	y[k] &= h[k] * x[k] = \sum_{i=-\infty}^{\infty}(1+p)^i \epsilon[i] \cdot x[k-i]\\
-	&= \sum_{i=0}^{\infty}(1+p)^i\cdot x[k-i]
+	y[k] = h[k] * x[k] = \sum_{i=-\infty}^{\infty}(1+p)^i \epsilon[i] \cdot x[k-i] = \sum_{i=0}^{\infty}(1+p)^i\cdot x[k-i]
 \end{abox}
 
 \begin{abox}
