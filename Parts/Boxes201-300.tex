@@ -22,5 +22,7 @@
 \end{abox}
 
 \begin{abox}
-	a
+	c_n &:= \frac{1}{2}(a_n - jb_n) = \frac{1}{T}\int_{-T/2}^{T/2}x(t)\cos(n\omega_0t)dt - j\frac{1}{T}\int_{-T/2}^{T/2}x(t)\sin(n\omega_0t)dt\\
+	&= \frac{1}{T}\int_{-T/2}^{T/2}x(t)\left(\underbrace{\cos(n\omega_0t) + j\sin(-n\omega_0t)}_{e^{-jn\omega_0t}}\right)dt = \frac{1}{T}\int_{-T/2}^{T/2}x(t) \cdot e^{-jn\omega_0t}dt\\
+	c_{-n}& = c_n^* = \frac{1}{T}\int_{-T/2}^{T/2}x(t) \cdot e^{jn\omega_0t}dt
 \end{abox}
