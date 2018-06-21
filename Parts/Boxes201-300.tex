@@ -23,6 +23,74 @@
 
 \begin{abox}
 	c_n &:= \frac{1}{2}(a_n - jb_n) = \frac{1}{T}\int_{-T/2}^{T/2}x(t)\cos(n\omega_0t)dt - j\frac{1}{T}\int_{-T/2}^{T/2}x(t)\sin(n\omega_0t)dt\\
-	&= \frac{1}{T}\int_{-T/2}^{T/2}x(t)\left(\underbrace{\cos(n\omega_0t) + j\sin(-n\omega_0t)}_{e^{-jn\omega_0t}}\right)dt = \frac{1}{T}\int_{-T/2}^{T/2}x(t) \cdot e^{-jn\omega_0t}dt\\
+	&= \frac{1}{T}\int_{-T/2}^{T/2}x(t)(\underbrace{\cos(n\omega_0t) + j\sin(-n\omega_0t)}_{e^{-jn\omega_0t}})dt = \frac{1}{T}\int_{-T/2}^{T/2}x(t) \cdot e^{-jn\omega_0t}dt\\
 	c_{-n}& = c_n^* = \frac{1}{T}\int_{-T/2}^{T/2}x(t) \cdot e^{jn\omega_0t}dt
 \end{abox}
+
+\begin{abox}
+	c_0 &= \frac{a_0}{2} = \hat{x}\frac{T_i}{T}\\
+	c_n &= \frac{1}{2}(a_n - jb_n) = \frac{a_n}{2} = \hat{x}\frac{T_i}{T} \cdot \text{si}\left(n\pi\frac{T_i}{T}\right)\\
+	c_{-n} &= (c_n)^* = c_n
+\end{abox}
+
+\begin{abox}
+	c_k = \hat{x}\frac{T_i}{T} \cdot \text{si}\left(k\pi\frac{T_i}{T}\right)
+\end{abox}
+
+\begin{abox}
+	X_F(t) = \sum_{k = -\infty}^{\infty}c_k \cdot e^{jk\omega_0t} \text{ für } c_k = \frac{1}{T}\int_{-T/2}^{T/2}x(t)e^{-jk\omega_0t}dt
+\end{abox}
+
+\begin{abox}
+		X_F(t) &= \sum_{k = -\infty}^{\infty}\frac{\varDelta\omega}{2\pi}\int_{-T/2}^{T/2}x(t')e^{-j\omega_kt'}dt' \cdot e^{j\omega_kt}\\
+		&= \frac{1}{2\pi} \sum_{k = -\infty}^{\infty}\left[\int_{-T/2}^{T/2}x(t')e^{-j\omega_kt'}dt'\right] \cdot e^{j\omega_kt} \cdot \varDelta\omega
+\end{abox}
+
+\begin{abox}
+	X_F(t) \overset{(T\to\infty)}{=} \frac{1}{2\pi}\int_{-\infty}^{\infty}\underbrace{\left[\int_{-\infty}^{\infty}x(t) e^{-j\omega t'} \right]}_{=: X(\omega)}  e^{j\omega t} d\omega = \frac{1}{2\pi}\int_{-\infty}^{\infty}X(\omega) e^{j\omega t} d\omega
+\end{abox}
+
+\begin{abox}
+	x(t) = \delta(t) \laplace X(f) = \int_{-\infty}^{\infty}\delta(t) \cdot e^{-j2\pi ft}dt = e^0 = 1
+\end{abox}
+
+\begin{abox}
+	\delta(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty}e^{j\omega t}d\omega = \int_{-\infty}^{\infty}e^{j2\pi ft}df
+\end{abox}
+
+\begin{abox}
+	x(t) \text{ }\laplace\text{ } X(\omega) &= \int_{-\infty}^{\infty}\hat{x}\cdot\rect(\frac{t}{T_i})e^{-j\omega t}dt = \hat{x}\int_{-T_i/2}^{T_i/2}e^{-j\omega t}dt = \hat{x}\left[\frac{e^{-j\omega t}}{-j\omega}\right]_{-T_i/2}^{T_i/2}\\
+	&= -\frac{\hat{x}}{j\omega}\left(e^{-j\omega\frac{T_i}{2}} - e^{j\omega\frac{T_i}{2}}\right) =  -\frac{\hat{x}}{j\omega} \cdot 2j \cdot Im(e^{-j\omega\frac{T_i}{2}})\\
+	&= -\frac{2\hat{x}}{\omega}\sin(-\omega\frac{T_i}{2})= \hat{x}T_i\cdot\text{si}(\omega\frac{T_i}{2}) \overset{(\omega = 2\pi f)}{=}\hat{x}\cdot T_i \cdot \text{si}(\pi fT_i) 
+\end{abox}
+
+\begin{abox}
+	X(f) = \delta(f - f_0) \text{ }\Laplace\text{ } x(t) = \int_{-\infty}^{\infty}\delta(f - f_0)\cdot e^{j2\pi ft}df = e^{j2\pi f_0t}
+\end{abox}
+
+\begin{abox}
+	c_1x_1(t) + c_2x_2(t) \text{ }\laplace\text{ } c_1X_1(\omega) + c_2X_2(\omega)
+\end{abox}
+
+\begin{abox}
+	\rect(\frac{t}{2t}) \text{ }\laplace\text{ } 2T\cdot\text{si}(T\omega) \text{ und } \rect(\frac{t}{4t}) \text{ }\laplace\text{ } 4T \cdot \text{si}(2T\omega)
+\end{abox}
+
+\begin{abox}
+	x(t) &= 2\rect(\frac{t}{2t}) + 0.5\rect(\frac{t}{4t})\\
+	&\ztrans\\
+	X(\omega) &= 2\cdot 2T\cdot\text{si}(T\omega) + 0.54T \cdot \text{si}(2T\omega) = 4T\text{si}(T\omega) + 2T\text{si}(2T\omega) = 4T\text{si}(\pi 2Tf) + 2T\text{si}(\pi 4Tf)
+\end{abox}
+
+
+
+
+
+
+
+
+
+
+
+
+
