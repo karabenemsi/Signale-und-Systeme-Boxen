@@ -59,31 +59,43 @@
 \end{abox}
 
 \begin{abox}
-	x(t) \text{ }\laplace\text{ } X(\omega) &= \int_{-\infty}^{\infty}\hat{x}\cdot\rect(\frac{t}{T_i})e^{-j\omega t}dt = \hat{x}\int_{-T_i/2}^{T_i/2}e^{-j\omega t}dt = \hat{x}\left[\frac{e^{-j\omega t}}{-j\omega}\right]_{-T_i/2}^{T_i/2}\\
+	x(t) \slaplace X(\omega) &= \int_{-\infty}^{\infty}\hat{x}\cdot\rect(\frac{t}{T_i})e^{-j\omega t}dt = \hat{x}\int_{-T_i/2}^{T_i/2}e^{-j\omega t}dt = \hat{x}\left[\frac{e^{-j\omega t}}{-j\omega}\right]_{-T_i/2}^{T_i/2}\\
 	&= -\frac{\hat{x}}{j\omega}\left(e^{-j\omega\frac{T_i}{2}} - e^{j\omega\frac{T_i}{2}}\right) =  -\frac{\hat{x}}{j\omega} \cdot 2j \cdot Im(e^{-j\omega\frac{T_i}{2}})\\
 	&= -\frac{2\hat{x}}{\omega}\sin(-\omega\frac{T_i}{2})= \hat{x}T_i\cdot\text{si}(\omega\frac{T_i}{2}) \overset{(\omega = 2\pi f)}{=}\hat{x}\cdot T_i \cdot \text{si}(\pi fT_i) 
 \end{abox}
 
 \begin{abox}
-	X(f) = \delta(f - f_0) \text{ }\Laplace\text{ } x(t) = \int_{-\infty}^{\infty}\delta(f - f_0)\cdot e^{j2\pi ft}df = e^{j2\pi f_0t}
+	X(f) = \delta(f - f_0) \sLaplace x(t) = \int_{-\infty}^{\infty}\delta(f - f_0)\cdot e^{j2\pi ft}df = e^{j2\pi f_0t}
 \end{abox}
 
 \begin{abox}
-	c_1x_1(t) + c_2x_2(t) \text{ }\laplace\text{ } c_1X_1(\omega) + c_2X_2(\omega)
+	c_1x_1(t) + c_2x_2(t) \slaplace c_1X_1(\omega) + c_2X_2(\omega)
 \end{abox}
 
 \begin{abox}
-	\rect(\frac{t}{2t}) \text{ }\laplace\text{ } 2T\cdot\text{si}(T\omega) \text{ und } \rect(\frac{t}{4t}) \text{ }\laplace\text{ } 4T \cdot \text{si}(2T\omega)
+	\rect(\frac{t}{2t}) \slaplace 2T\cdot\text{si}(T\omega) \text{ und } \rect(\frac{t}{4t}) \slaplace 4T \cdot \text{si}(2T\omega)
 \end{abox}
 
 \begin{abox}
 	x(t) &= 2\rect(\frac{t}{2t}) + 0.5\rect(\frac{t}{4t})\\
 	&\ztrans\\
-	X(\omega) &= 2\cdot 2T\cdot\text{si}(T\omega) + 0.54T \cdot \text{si}(2T\omega) = 4T\text{si}(T\omega) + 2T\text{si}(2T\omega) = 4T\text{si}(\pi 2Tf) + 2T\text{si}(\pi 4Tf)
+	X(\omega) &= 2\cdot 2T\cdot\text{si}(T\omega) + 0.54T \cdot \text{si}(2T\omega)\\
+	 &= 4T\text{si}(T\omega) + 2T\text{si}(2T\omega) = 4T\text{si}(\pi 2Tf) + 2T\text{si}(\pi 4Tf)
 \end{abox}
 
+\begin{abox}
+	\cos(2\pi f_0t) &= \frac{1}{2}e^{j2\pi f_0t} + \frac{1}{2}e^{-j2\pi f_0t} \sLaplace \frac{1}{2}\delta(f - f_0) + \frac{1}{2}\delta(f + f_0)\\
+	\sin(2\pi f_0t) &= \frac{1}{2j}e^{j2\pi f_0t} + \frac{1}{2j}e^{-j2\pi f_0t} \sLaplace \frac{1}{2j}\delta(f - f_0) + \frac{1}{2j}\delta(f + f_0)\\
+	&= \frac{j}{2}\delta(f + f_0) - \frac{j}{2}\delta(f - f_0)
+\end{abox}
 
+\begin{abox}
+	x(t - t_0) \slaplace e^{-j\omega t_0}X(\omega)
+\end{abox}
 
+\begin{abox}
+	x(t) = \rect(\frac{t - t_0}{T})\slaplace X(\omega) = e^{-j\omega_0t} \cdot T \cdot \text{si}(\pi fT)
+\end{abox}
 
 
 
