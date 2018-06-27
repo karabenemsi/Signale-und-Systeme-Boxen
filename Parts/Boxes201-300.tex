@@ -97,7 +97,70 @@
 	x(t) = \rect(\frac{t - t_0}{T})\slaplace X(\omega) = e^{-j\omega_0t} \cdot T \cdot \text{si}(\pi fT)
 \end{abox}
 
+\begin{abox}
+	x(at) \slaplace \frac{1}{|a|}X(\frac{\omega}{a})\\
+	\text{ insbesondere also } x(-t) \slaplace X(-\omega)
+\end{abox}
 
+\begin{abox}
+	x_2(t) = \rect(0,5t) \slaplace X_2(f):=2\text{si}(\pi \frac{f}{0,5}) \text{ und }\\
+	x_3(t) = rect(2t) \slaplace X_3(f):= \frac{1}{2} \text{si}(\pi \frac{f}{2})
+\end{abox}
+
+\begin{abox}
+	\delta(at) \slaplace \frac{1}{|a|} \sLaplace \frac{1}{|a|} \delta(t) \text{, d.h. } \delta(at) = \frac{1}{|a|}\delta(t)
+\end{abox}
+
+\begin{tbox}
+	\begin{enumerate}[label=\Roman*)]
+		\item Falls $x(t) \slaplace X_{\omega}(\omega)$ gilt, dann gilt auch $X_{\omega}(t) \slaplace 2\pi x(-\omega)$
+		\item Falls $x(t) \slaplace X_{f}(f)$ gilt, dann gilt auch $X_{f}(t) \slaplace x(-f)$
+	\end{enumerate}
+\end{tbox}
+
+
+\begin{abox}
+	1 \slaplace 2\pi \delta(-\omega) = 2\pi \delta(-\omega) \text{ bzw. } 1 \slaplace \delta(-f) = \delta(f)
+\end{abox}
+
+%TODO sould be 5.29
+\begin{abox}
+	X(t) &= T' \text{si}(\pi T't) \slaplace \rect(\frac{-f}{T'}) = rect(\frac{f}{T'})\\
+	&\overset{(T' = \frac{1}{T})}{\Longleftrightarrow} \frac{1}{T}\text{si}(\pi\frac{t}{T}) \slaplace \rect(T\cdot f)\\
+	&\overset{(lin.)}{\Longleftrightarrow} \text{si}(\pi \frac{t}{T}) \slaplace T \rect(Tf)		\numbereq
+\end{abox}
+
+\begin{abox}
+	\frac{d}{dt}x(t) \slaplace j\omega X(\omega)
+\end{abox}
+
+\begin{abox}
+	x''(t)+3x'(t)+x(t) &= \rect(t)\\
+	&\ztrans\\
+	(j\omega)^2X(\omega)+3j\omega X(\omega) + X(\omega)&=\text{si}(\frac{\omega}{2})
+\end{abox}
+
+\begin{abox}
+	X(\omega) = \frac{\text{si}(\frac{\omega}{2})}{(j\omega)^2 + 3j\omega + 1}
+\end{abox}
+
+\begin{abox}
+	\text{sgn}'(t) &:= \epsilon'(t) - (\epsilon(-t))' = \delta(t) - \delta(-t) \cdot (-1) = 2\delta(t)\\
+	&\ztrans\\
+	j\omega Y(\omega) &= 2 \cdot 1 \Longleftrightarrow Y(\omega) = \frac{2}{j\omega} \overset{(\omega = 2\pi f)}{=} \frac{1}{j\pi f}
+\end{abox}
+
+\begin{abox}
+	\epsilon(t) &= \frac{1}{2} + \frac12\text{sgn}(t)\\
+	&\ztrans\\
+	X(f) &= \frac12 \delta(f) + \frac{1}{j2\pi f} \overset{(5.25)}{=} \pi \delta(\omega) + \frac{1}{j\omega}
+\end{abox}
+
+\begin{abox}
+	e^{at} \cdot \epsilon(t) \slaplace &\int_{-\infty}^{\infty}e^{at}\epsilon(t) \cdot e^{-j\omegat}dt = \int_{0}^{\infty}e^{(a-j\omega)t}dt\\
+	&= \left[\frac{e^{(a-j\omega)t}}{a-j\omega}\right]_{0}^{\infty} \overset{(a<0)}{=} 0-\frac{1}{a-j\omega}\\
+	&= \frac{1}{j\omega-a} = \frac{1}{j2\pi f -a}
+\end{abox}
 
 
 
