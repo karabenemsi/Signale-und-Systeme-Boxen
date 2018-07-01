@@ -43,15 +43,10 @@
 	&\ztrans\\
 	Y(z) &= Y(z) \cdot (1 + p) + zX(z) \Leftrightarrow Y(z)(z - (1 + p)) = zX(z)
 \end{abox}
-%111
+
 \begin{abox}
 	H(z) := \frac{Y(z)}{X(z)} = \frac{z}{z - (1 + p)}
 \end{abox}
-
-
-
-
-
 
 \begin{abox}
 	x[k] &= x_0 \cdot \epsilon[k]\\
@@ -68,16 +63,20 @@
 \end{abox}
 
 \begin{abox}
-	\frac{p^{-1}}{z-(a+p)} \Laplace p^{-1}(a+p)^{K-1} \epsilon[K-1]
+	\frac{p^{-1}}{z-(a+p)} \sLaplace p^{-1}(a+p)^{K-1} \epsilon[K-1]
 	\text{ und }\\
-	\frac{p^{-1}}{z-1} \Laplace p^{-1}1^{K-1}\epsilon[K-1] = p^{-1}\epsilon[K-1]
+	\frac{p^{-1}}{z-1} \sLaplace p^{-1}1^{K-1}\epsilon[K-1] = p^{-1}\epsilon[K-1]
 \end{abox}
 
-\todo{116}
-
-\setcounter{BoxCounter}{116}
 \begin{abox}
-	\sum_{i=0}^{n}\alpha_i y[k-i] &= \sum_{i=N-M}^{N}\beta_i x[k-i] &(a_0 \ne 0, \beta_{N-M} \ne 0)\\
+	Y(z) &= x_0 \cdot z^2 \cdot \left(\frac{p^{-1}}{z - (1 + p)} - \frac{p^{-1}}{z - 1}\right)\\
+	&\ztransrueck\\
+	y[k] &= x_0 \cdot (p^{-1}(1 + p)^{k+1}\cdot\epsilon[k + 1]) \cdot p^{-1} - \epsilon[k + 1]\\
+	&= \frac{x_0}{p} \cdot ((1+p)^{k + 1} - 1) \cdot \epsilon[k + 1]
+\end{abox}
+
+\begin{abox}
+	\sum_{i=0}^{n}\alpha_i y[k-i] &= \sum_{i=N-M}^{N}\beta_i x[k-i] &(a_0 \ne 0\text{, } \beta_{N-M} \ne 0)\\
 	&\ztrans\\
 	\sum_{i=0}^{N}\alpha_i\cdot z^{-i} \cdot Y(z) &= \sum_{i= N-M}^{N} \beta_i \cdot z^{-i} \cdot X(z)\\
 	\Leftrightarrow  Y(z) \cdot \sum_{i=0}^{N}\alpha_i\cdot z^{-i} &= X(z) \cdot \sum_{i= N-M}^{N} \beta_i \cdot z^{-i}
@@ -95,7 +94,7 @@
 
 
 \begin{abox}
-	h[k] &= 3 \cdot (\frac15)^k \cdot epsilon[k] + 2 \cdot (\frac12)^k \cdot \epsilon[k]\\
+	h[k] &= 3 \cdot (\frac15)^k \cdot \epsilon[k] + 2 \cdot (\frac12)^k \cdot \epsilon[k]\\
 	&\ztrans\\
 	H(z) &= 3\cdot \frac{z}{z-\frac15} + 2 \cdot \frac{z}{z-\frac12} = \frac{15z}{5z-1} + \frac{4z}{2z-1}\\	
 	&= \frac{15z(2z-1) + 4z(5z-1)}{(5z-1)(2z-1)} = \frac{50z^2 - 19z}{10z^2 - 7z +1}
@@ -158,8 +157,8 @@
 \end{abox}
 
 \begin{abox}
-	&-A &-(a+p)B &= 1 &(1)\\
-	&A  &+B	&= 0 &(2)
+	-A -(a+p)B &= 1\quad (1)\\
+	A  +B	&= 0\quad (2)
 \end{abox}
 
 \begin{abox}
@@ -182,13 +181,15 @@
 	&= \frac{z^2(A+B)+ z(-6A-8B+C) + 9A+15B-5C}{HN}
 \end{abox}
 
-\begin{abox}
-	&A + &B    &     &=2 &(1)\\
-	&-6A &-8B  & +1C &=-9 &(2)\\
-	&9A	 &+15B &-5C  &=3 &(3)\\
-	5\cdot(2)+(3):&-21A &-25B & &=-42 &(4)\\
-	21\cdot(1+4): & &-4B & &=0 &(5)
-\end{abox}
+\begin{tbox}
+	\begin{tabular}{rrcrcrcrc}
+		& $A$ &$+$ &$B$ & & &$=$ &$2$ &$(1)$\\
+		& $-6A$ & $-$ & $8B$ & $+$ & $1C$ & $=$ & $-9$ & $(2)$\\
+		& $9A$ & $+$ & $15B$ & $-$ & $5C$ & $=$ & $3$ & $(3)$\\
+		$5 \cdot (2) + (3):$& $-21A$ & $-$ & $25B$ & & & $=$ & $-42$ & $(4)$\\
+		$21 \cdot (1) + (4):$& & & $-4B$ & & & $=$ & $0$ & $(5)$\\
+	\end{tabular}
+\end{tbox}
 
 \begin{abox}
 	Y(z) &= \frac{2}{z-5} + \frac{3}{(z-3)^2}\\
@@ -225,9 +226,10 @@
 	\end{pmatrix} \lambda_i^{k-v}\epsilon[k-1]
 \end{abox}
 
-\todo{145}
+\begin{abox}
+	Y(z) = \frac{z}{(z + 1)(z - 1)} = \frac{A}{(z - 1)} + \frac{B}{(z + 1)}
+\end{abox}
 
-\setcounter{BoxCounter}{145}
 \begin{abox}
 	A= \frac{1}{0!}\left(\frac{d}{dz}\right)^0[(z-1) \cdot \frac{z}{z-1}(z+1)]|_{z=1}=\frac{z}{z+1}|_{z=1} = \frac12\\
 	B= \frac{1}{0!}\left(\frac{d}{dz}\right)^0[(z+1) \cdot \frac{z}{z-1}(z+1)]|_{z=-1}=\frac{z}{z-1}|_{z=-1} = \frac12
@@ -283,7 +285,8 @@
 	Y(z) &= \frac{A}{z - \lambda_1} + \frac{B}{z - \lambda_2}\\
 	&\ztransrueck\\
 	y[k] &= A \cdot \lambda_1^{k-1} \epsilon[k - 1] +  B \cdot \lambda_2^{k-1} \epsilon[k - 1]\\
-	&= \frac{1 + \sqrt{5}}{2\sqrt{5}} \cdot \left(\frac{1 + \sqrt{5}}{2}\right)^{k -1} \cdot \epsilon[k - 1] +  \frac{1 - \sqrt{5}}{-2\sqrt{5}} - \frac{1 - \sqrt{5}}{-2\sqrt{5}} \cdot \left(\frac{1 + \sqrt{5}}{2}\right)^{k - 1} \cdot \epsilon[k - 1]\\
+	&= \frac{1 + \sqrt{5}}{2\sqrt{5}} \cdot \left(\frac{1 + \sqrt{5}}{2}\right)^{k -1} \cdot \epsilon[k - 1] +  \frac{1 - \sqrt{5}}{-2\sqrt{5}}\\
+	& \quad - \frac{1 - \sqrt{5}}{-2\sqrt{5}} \cdot \left(\frac{1 + \sqrt{5}}{2}\right)^{k - 1}\cdot \epsilon[k - 1]\\
 	&= \frac{1}{\sqrt{5}}\left(\left(\frac{1 + \sqrt{5}}{2}\right)^k - \left(\frac{1 - \sqrt{5}}{2}\right)^k\right)\epsilon[k - 1]
 \end{abox}
 
@@ -300,7 +303,8 @@
 
 \begin{abox}
 	V(z) &= H_1(z) \cdot X(z) \text{ und}\\
-	W(z) &= H_2(z) \cdot X(z) \text{ und also } Y(z) = V(z) + W(z) = H_1(z) \cdot X(z) + H_2(z) \cdot X(z) = (H_1(z) + H_2(z)) \cdot X(z)
+	W(z) &= H_2(z) \cdot X(z) \text{ und also } Y(z) = V(z) + W(z) = H_1(z) \cdot X(z) + H_2(z) \cdot X(z)\\
+	&= (H_1(z) + H_2(z)) \cdot X(z)
 \end{abox}
 
 \begin{abox}
@@ -403,12 +407,12 @@
 \end{abox}
 
 \begin{tbox}
-	a) \begin{align*}\epsilon(t) * \epsilon(t) = \int_{-\infty}^{\infty}\epsilon(\tau)\epsilon(t  - \tau) d \tau = 
+	\begin{align*}\text{a) }\epsilon(t) * \epsilon(t) = \int_{-\infty}^{\infty}\epsilon(\tau)\epsilon(t  - \tau) d \tau = 
 	\int_{0}^{\infty}\epsilon(t  - \tau) d \tau = 	\int_{0}^{t}1 \cdot d\tau \overset{\lambda := t-\tau}{=}\\
 	-\int_{t}^{-\infty}\epsilon(\lambda) d \lambda = 
 	\int_{-\infty}^{0}\epsilon(\lambda) d \lambda \overset{(42)}{=} t\epsilon(t) = \text{ramp}(t)\end{align*}
-	b) \begin{align*}
-	\text{rect}(t) * \epsilon(t) &= 	\int_{-\infty}^{\infty}\rect(\tau)\epsilon(t  - \tau) d \tau \\&= 
+	 \begin{align*}
+	\text{b) }\text{rect}(t) * \epsilon(t) &= 	\int_{-\infty}^{\infty}\rect(\tau)\epsilon(t  - \tau) d \tau \\&= 
 	\int_{-0,5}^{0,5}\epsilon(t  - \tau) d \tau \overset{\lambda := t-\tau}{=}
 	-\int_{t-(-0,5)}^{t-0,5}\epsilon(\lambda) d \lambda = 
 	-\int_{t-0,5)}^{t+0,5}\epsilon(\lambda) d \lambda\\ &\overset{(4.2)}{=}[\lambda\epsilon(\lambda)]_{t-0,5}^{t+0,5}
@@ -586,7 +590,12 @@
 	\end{abox}
 
 
-\todo{196}
+\begin{abox}(
+	X_F (t) &= \frac{a_0}{2} + \sum_{n=1}^{\infty}a_n \cdot \cos(n\omega_0t)\\
+	&= \hat{x}\frac{T_i}{T} + \sum_{n=1}^{\infty}2\hat{x}\frac{T_i}{T}\text{si}(n\pi\frac{T_i}{T}) \cdot \cos(n\omega_0t)\\
+	&= 2\hat{x}\frac{T_i}{T}(\frac{1}{2} + \text{si}(\pi\frac{T_i}{T})\cdot \cos(\omega_0t) + \text{si}(2\pi\frac{T_i}{T})\cdot \cos(2\omega_0t)\\
+	&\quad + \text{si}(3\pi\frac{T_i}{T})\cdot \cos(3\omega_0t) + \dots)
+\end{abox}
 
 \setcounter{BoxCounter}{196}
 \begin{abox}
