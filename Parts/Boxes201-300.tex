@@ -162,7 +162,60 @@
 \end{abox}
 
 
+\begin{tbox}
+	\begin{enumerate}[label=\Roman*)]
+		\item Faltungstheorem: $x(t) * y(t) \slaplace X(\omega) \cdot (\omega)$
+		
+		\item Multiplikationstheorem: $x(t) \cdot y(t) \slaplace \frac{1}{2\pi}X(\omega) * Y(\omega)$ (bzw. \slaplace $X_f(f) * Y_f(f)$)
+	\end{enumerate}
+\end{tbox}
 
+\begin{abox}
+	Y(f) = X(f) \cdot \rect(\frac{f}{2f_g}) = \begin{cases}
+		X(f)&,|f| < f_g\\
+		0 &,|f| > f_g
+	\end{cases}
+\end{abox}
+
+\begin{abox}
+	Y(f) &= X(f) \cdot \rect(\frac{f}{2f_g})\\
+	& \ztransrueck\\
+	y(t) &= x(t) * 2f_g \cdot \si(s\pi f_gt)
+\end{abox}
+
+\begin{abox}
+	\int_{-\infty}^{t}x(\tau)d\tau \slaplace \frac{1}{j\omega}X(\omega) + \pi \cdot X(0) \cdot \delta(\omega)\\
+	= \frac{1}{j2\pi f} X_f(f) + \frac12 X_f(0) \cdot \delta(f)
+\end{abox}
+
+\begin{abox}
+	e^{j\omega t}\cdot x(t) \slaplace X(\omega - \omega_0)\quad(=X_f(f-f_0))
+\end{abox}
+
+\begin{abox}
+	X(j\omega) = \int_{-\infty}^{\infty}e^{5t}\epsilon(t)\cdot e^{-j\omega t} dt = \int_{0}^{\infty}e^{(5-j\omega)\cdot t} dt = \left[\frac{e^{(5-j\omega)\cdot t}}{5-j\omega}\right]_0^\infty \to \infty
+\end{abox}
+
+\begin{abox}
+	x(t) \cdot e^{-\sigma t} = e^{5t} \cdot \epsilon(t) \cdot e^{-6t} = e^{-t} \cdot \epsilon(t)
+\end{abox}
+
+\begin{abox}
+	\mathcal{L}\left\lbrace x(t)\right\rbrace  := \mathcal{F}\left\lbrace x(t)\cdot \epsilon^{-\sigma t}\right\rbrace 
+\end{abox}
+
+\begin{abox}
+	\mathcal{L}\left\lbrace x(t) \right\rbrace &= \int_{-\infty}^{\infty} x(t) e^{-\sigma t} \cdot e^{j\omega t} dt = \int_{-\infty}^{\infty} x(t) e^{-(\sigma + j\omega) t} dt\\
+	&= \int_{-\infty}^{\infty} x(t) \cdot e^{-st}dt =: X_{\mathcal{L}}(s)
+\end{abox}
+
+\begin{abox}
+	x(t) e^{-dt} = \mathcal{F}^{-1}\left\lbrace X_{\mathcal{L}}(s) \right\rbrace = \frac{1}{2\pi} \int_{-\infty}^{\infty} X_{\mathcal{L}}(\sigma+j\omega)\cdot e^{j\omega t}d\omega
+\end{abox}
+
+\begin{abox}
+	x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}X_{\mathcal{L}}(\sigma + j\omega) \cdot e^{(\sigma + j\omega)\cdot t}d\omega = \frac{1}{2\pi j} \int_{\sigma -j\infty}^{\sigma + j \infty}X_{\mathcal{L}}(s)\cdot e^{st} ds
+\end{abox}
 
 
 
