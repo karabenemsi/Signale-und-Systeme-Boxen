@@ -217,7 +217,162 @@
 	x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}X_{\mathcal{L}}(\sigma + j\omega) \cdot e^{(\sigma + j\omega)\cdot t}d\omega = \frac{1}{2\pi j} \int_{\sigma -j\infty}^{\sigma + j \infty}X_{\mathcal{L}}(s)\cdot e^{st} ds
 \end{abox}
 
+\begin{abox}
+	\delta(t)\slaplace \int_{-\infty}^{\infty}\delta(t)\cdot e^{-st}dt = e^{-s\cdot 0} = 1 \text{  für  } s \in \mathbb{C}
+\end{abox}
+
+\begin{abox}
+	e^{at}\epsilon(t) \slaplace \int_{-\infty}^{\infty}e^{at}\epsilon(t)e^{-st}dt = \int_{0}^{\infty}e^{(a-s)t}dt
+	\\= \left[\frac{e^{(a-s)t}}{a-s}\right]_{0}^{\infty} \overset{\text{Re}(a-s)<0}{=} e^{-\infty} - \frac{e^{0}}{a-s} = \frac{1}{s-a} \text{\quad für \quad } \text{Re}(s) > \text{Re}(a)
+\end{abox}
+
+\begin{abox}
+	x(t)&=\cos(\omega_0 t) \cdot \epsilon(t) = \frac{1}{2}e^{j\omega_0 t}\epsilon(t) + \frac{1}{2}e^{-j\omega_0 t}\epsilon(t)\\
+	&\ztrans\\
+	X(s) &= \frac12 \frac{1}{s-j\omega_0} + \frac12 \frac{1}{s+j\omega_0} = \frac12 \frac{s-j\omega_0 + s+j\omega_0}{(s+j\omega_0)(s-j\omega_0)}\\
+	&= \frac{s}{s^2 + \omega_0^2} \qquad \text{für} \quad \text{Re}(s)>0
+\end{abox}
+
+\begin{abox}
+	&u(t) &= R \cdot i(t) \quad\text{bzw}\quad &u(t) &= L \cdot \frac{d}{dt} i(t) \quad \quad\text{bzw}\quad &i(t)&= C \cdot \frac{d}{dt}u(t)\\
+	 & &\ztrans & &\ztrans & &\ztrans\\
+	 &U(s) &= R \cdot I(s)  &U(s) &=L \cdot sI(s)  &I(s)&=C\cdot s \cdot U(s)
+\end{abox}
+
+\begin{abox}
+	H_R(s):=\frac{U(s)}{I(s)} = R \quad\text{bzw}\quad H_L(s):= \frac{U(S)}{I(S)} = sL \quad\text{bzw}\quad H_C(s) := \frac{U(s)}{I(s)} = \frac{1}{sC}
+\end{abox}
 
 
+\begin{abox}
+	\text{MR}: &u_1(t) + u_2(t) + ... + u_n(t) = 0\\
+	&\ztrans\\
+	&U_1(t) + U_2(t) + ... + U_n(t) = 0\\	
+	\text{KR}: &i_1(t) + i_2(t) + ... + i_n(t) = 0\\
+	&\ztrans\\
+	&I_1(t) + I_2(t) + ... + I_n(t) = 0
+\end{abox}
+
+\begin{tbox}
+	a) $u_1(t) = 10\epsilon(t) \laplace U_1(s) = \frac{10}{s}$\\
+	b) $u_1(t) = 3\delta(t) \laplace U_1(s) = 3$\\
+	c) $u_1(t) = 2e^{4t}\cdot \epsilon(t) \laplace U_1(s) = \frac{2}{s-4}$
+	
+	$H_R(s) = 2000=R, H_C(s) = \frac{1}{sC} = \frac{1000}{s}$
+\end{tbox}
 
 
+\begin{abox}
+	H(s):= \frac{U_2(s)}{U_1(s)} = \frac{H_R(s)}{H_R(s)+H_C(s)} = \frac{R}{R+\frac{1}{sC}} = \frac{RCs}{RCs + 1} = \frac{2s}{2s+1}
+\end{abox}
+
+\begin{tbox}
+	a) $U_2(s) = H(s) \cdot U_1(s) = \frac{2s}{2s+1}\cdot \frac{10}{s} = \frac{20}{2s+1}$\\
+	b) 	$U_2(s) = H(s) \cdot U_1(s) = \frac{2s}{2s+1}\cdot 3 = \frac{6s}{2s+1}$\\
+	c)		$U_2(s) = H(s) \cdot U_1(s) = \frac{2s}{2s+1}\cdot \frac{2}{s-4} = \frac{4-s}{(2s+1)(s-4)}$
+\end{tbox}
+
+\begin{tbox}
+	a) $U_2(s) = \frac{20}{2s + 1}= 10\frac{1}{s+0,5} \sLaplace u_2(t) = 10e^{-0,5t}\epsilon(t)$\\
+	b) $U_2(s) = \frac{6s}{2s + 1} = 3s\frac{1}{s+0,5} \sLaplace  3 \cdot \frac{d}{dt} \left[ e^{-0,5t}\epsilon(t)\right] $\\
+	$\quad\implies u_2(t) = 3 \cdot( e^{-0,5t}\cdot -0,5 \cdot \epsilon(t) + e^{-0,5t} \cdot \delta(t)) = 3\delta(t) - 1,5e^{-0,5t}\epsilon(t) $
+	c) $U_2(s) \sLaplace u_2(t) = ...$ s.h. Übungen mit PBZ
+\end{tbox}
+
+\chapter{Analoge Signale}
+\begin{abox}
+	Inhalt...
+\end{abox}
+
+
+\begin{abox}
+	\mathcal{H}\left\lbrace c \cdot x_1(t) + d\cdot x_2(t)\right\rbrace = c \cdot \mathcal{H}\left\lbrace x_1(t) \right\rbrace + d \cdot \mathcal{H}\left\lbrace x_2(t) \right\rbrace
+\end{abox}
+
+\begin{abox}
+	y(t-t_0) = \mathcal{H}\left\lbrace x(t-t_0) \right\rbrace
+\end{abox}
+
+\begin{abox}
+	y(t) = x(t) * h(t) \quad \text{für alle } x(t) \in \mathcal{V}
+\end{abox}
+
+\begin{abox}
+	Y(s) = X(s) \cdot H(s)  \quad \text{für alle } x(t) \in \mathcal{V}
+\end{abox}
+
+\begin{abox}
+	H(s) = \frac{Y(s)}{X(s)}
+\end{abox}
+
+\begin{abox}
+	y(t) &= x(t) * h(t) \quad \text{für alle } x(t) \in \mathcal{V}\\
+	&\ztrans\\
+	Y(s) &= X(s) \cdot H(s) \quad \text{für alle } X(s) \slaplace x(t) \in \mathcal{V}
+\end{abox}
+
+%261
+\begin{abox}
+	y(t) &= \mathcal{H}\left\lbrace x(t) \right\rbrace = \mathcal{H}\left\lbrace\int_{-\infty}^{\infty}x(\tau)\cdot \delta(t-\tau)d\tau\right\rbrace &\text{(wegen Satz 4.4.III)}\\
+	&= \int_{-\infty}^{\infty}x(\tau)\cdot{H}\left\lbrace\delta(t-\tau)d\tau\right\rbrace &\text{(Linarität)}\\
+	&= \int_{-\infty}^{\infty}x(\tau)\cdot h(t-\tau) d\tau\\
+	&= x(t) * h(t) &\text{(Def. Faltung, s.h. Seite 89)}
+\end{abox}
+
+\begin{abox}
+	H(s) = \frac{RCs}{RCs + 1} &= s\cdot \frac{1}{s + \frac{1}{RC}}\\
+	&\ztrans\\
+	h(t) &= \frac{d}{dt}\left[e^{-\frac{t}{RC}}\cdot\epsilon(t)\right] = e^{-\frac{t}{RC}} \cdot -\frac{1}{RC}\cdot \epsilon(t) + e^{-\frac{t}{RC}}\cdot\delta(t)\\
+	&= \delta(t) -\frac{1}{RC} \cdot e^{-\frac{t}{RC}}\epsilon(t) = \delta(t) - \frac{1}{2}e^{-\frac{t}{2}}\epsilon(t)
+\end{abox}
+
+\begin{abox}
+	y(t) &= h(t) * x(t) = (\delta(t) -\frac{1}{RC} \cdot e^{-\frac{t}{RC}}\epsilon(t)) * x(t)\\
+	&= x(t) - -\frac{1}{RC} \cdot \int_{-\infty}^{\infty} e^{-\frac{\tau}{RC}}\epsilon(\tau) \cdot x(t-\tau) d\tau\\
+	&=  x(t) - -\frac{1}{RC} \cdot \int_{0}^{\infty} e^{-\frac{\tau}{RC}}\epsilon(\tau) \cdot x(t-\tau) d\tau\\
+	&=  x(t) - -\frac12 \cdot \int_{0}^{\infty} e^{-\frac{\tau}{2}}\epsilon(\tau) \cdot x(t-\tau) d\tau
+\end{abox}
+
+
+\begin{abox}
+	y(t) &= \epsilon(t) - \frac{1}{RC} \int_{0}^{\infty} e^{-\frac{\tau}{RC}}\cdot \epsilon(t-\tau) d \tau\\
+	&= \epsilon(t) - \frac{1}{RC} \int_{0}^{\text{max}(t,0)} e^{-\frac{\tau}{RC}}d\tau\\
+	&= \epsilon(t) - \frac{1}{RC}\left[\frac{e^{-\frac{\tau}{RC}}}{-\frac{1}{RC}} \right]^{\text{max}(t,0)} = \epsilon(t) + \left(e^{-\frac{t}{RC}} -1 \right) \cdot \epsilon(t) = e^{-\frac{t}{RC}}\epsilon(t) = e^{-\frac{t}{2}}\epsilon(t)
+\end{abox}
+
+\begin{abox}
+	i_R(t) = \frac1R \cdot u_R(t) \quad \text{btw.} \quad i_C(t) = C\cdot\frac{d}{dt}u_C(t)
+\end{abox}
+
+\begin{abox}
+	u_1(t) = u_R(t) + u_C(t)
+\end{abox}
+
+\begin{abox}
+	x(t) = RC\frac{d}{dt}y(t) + y(t)
+\end{abox}
+
+\begin{abox}
+	x(t) &= RC \frac{d}{dt} y(t) + y(t)\\
+	&\ztrans\\
+	X(s) &= RC\cdot s \cdot Y(s) + Y(s)
+\end{abox}
+
+\begin{abox}
+	X(s) &= RC\cdot s \cdot Y(s) + Y(s) \Leftrightarrow X(s) = Y(s) \cdot (RCs + 1)\\
+	&\implies H(s) = \frac{Y(s)}{X(s)} = \frac{1}{RCs + 1}
+\end{abox}
+
+\begin{abox}
+	Y(s) = H(s) \cdot X(s) = \frac{1}{RCs + 1} \cdot \frac1s = \frac{1}{(RCs + 1) s} = \frac{1}{RC} \cdot \frac{1}{(s+ \frac{1}{RC})\cdot s}
+\end{abox}
+
+\begin{abox}
+	Y(s) = \frac{1}{RC} \cdot( \frac{A}{s-\alpha} + \frac{B}{s-\beta}) =  \frac{1}{RC} \cdot( \frac{-RC}{s-\frac{1}{RC}} + \frac{RC}{s}) = \frac1s - \frac{1}{s+\frac{1}{RC}}
+\end{abox}
+
+\begin{abox}
+	Y(s) &= \frac1s - \frac{1}{s+\frac{1}{RC}}\\
+	&\ztransrueck\\
+	y(t) = \epsilon(t) - e^{-\frac{t}{RC}}\cdot \epsilon(t) = (a-e^{-\frac{t}{RC}})\cdot \epsilon(t)
+\end{abox}
