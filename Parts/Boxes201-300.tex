@@ -374,5 +374,77 @@
 \begin{abox}
 	Y(s) &= \frac1s - \frac{1}{s+\frac{1}{RC}}\\
 	&\ztransrueck\\
-	y(t) = \epsilon(t) - e^{-\frac{t}{RC}}\cdot \epsilon(t) = (a-e^{-\frac{t}{RC}})\cdot \epsilon(t)
+	y(t) &= \epsilon(t) - e^{-\frac{t}{RC}}\cdot \epsilon(t) = (a-e^{-\frac{t}{RC}})\cdot \epsilon(t)
 \end{abox}
+
+
+\setcounter{BoxCounter}{273}
+\begin{abox}
+	\sum_{i=0}^{N}a_i y^{(i)}(t) &=\sum_{i=0}^{M}b_i x^{(i)}(t)\\
+	&\ztrans\\
+	\sum_{i=0}^{N}a_i s^iY(s) &= \sum_{i=0}^{M}b_i s^iX(s) \Leftrightarrow Y(s) \cdot \sum_{i=0}^{N}a_is^i = X(s) \cdot \sum_{i=0}^{M}b_is^i
+\end{abox}
+
+\begin{abox}
+	H(s) = \frac{Y(s)}{X(s)} = \frac{\sum_{i=0}^{M}b_is^i}{\sum_{i=0}^{N}a_is^i} = \frac{b_0 + b_{1}s + b_Ms^M}{a_0 + a_1s + ... + a_Ns^N}
+\end{abox}
+
+\begin{abox}
+	y(t) &= \frac{d}{dt}x(t)\\
+	& \ztrans\\
+	Y(s) &= s\cdot X(s) \implies D(s):= \frac{Y(s)}{X(s)} = s
+\end{abox}
+
+\begin{abox}
+	y(t) =\frac{ b_0x^{(0)}(t) + b_1x^{(1)}(t) + ... + b_Nx^{(N)}(t) -a_0x^{(0)}(t) - a_1x^{(1)}(t) - ... - a_Nx^{(N)}(t)}{a_0}
+\end{abox}
+
+
+\begin{abox}
+	y^{(n)} = \frac{d}{dt}y^{(n-1)} \quad \text{bzw} \quad x^{(n)} = \frac{d}{dt}x^{(n-1)}
+\end{abox}
+
+
+\begin{abox}
+	\int^{(0)}y(t) := y(t) \text{  und  } \int^{(n)}y(t) = \int_{-\infty}^{t}\int^{(n-1)}y(\tau)d\tau
+\end{abox}
+
+\begin{abox}
+	\int^{(n)}y(m)t = \int^{(n-m)}y(t)
+\end{abox}
+
+\begin{abox}
+	a_0\int^{(N)}y(t) + a_1\int^{(N-1)}y(t) + ... + a_N\int^{(0)}y(t)\\
+	= b_0\int^{(N)}x(t) + b_1\int^{(N-1)}x(t) + ... + b_N\int^{(0)}x(t)
+\end{abox}
+
+\begin{abox}
+	H_{RC}(s) = \frac{1}{RCs + 1}
+\end{abox}
+
+\begin{abox}
+	b_0 = 1, a_0 = 1, a_1 = RC
+\end{abox}
+
+\begin{abox}
+	Zeichung
+\end{abox}
+
+\begin{abox}
+	H(s) := \frac{Y(s)}{X(s)} = \frac{\frac{1}{sC}}{R + sL + \frac{1}{sC}} = \frac{1}{1 + RCs + LCs^2}
+\end{abox}
+
+\begin{abox}
+	b_0 = 1, a_0 = 1, a_1 = RC, a_2 = LC
+\end{abox}
+
+\begin{abox}
+	Zeichnung
+\end{abox}
+
+
+\setcounter{BoxCounter}{289}
+\begin{tbox}
+	a) $ H(s) = \frac{1}{s+3} \cdot (s+2) \cdot \frac{1}{s} \cdot \frac{1}{s-1} \cdot \frac{1}{s+1} \cdot (s-5) = \frac{(s+2) \cdot (s-5)}{s(s-1)(s+1)(s+3)}$
+	b)$ H(s) = \frac{1}{s+3}\cdot \left(s+2+\frac{1}{s}\cdot \frac{s+1}{s+5}\right) = \frac{(s+2)(s+5)\cdot s + s+ 1}{(s+5)(s+3)\cdot s}$
+\end{tbox}
