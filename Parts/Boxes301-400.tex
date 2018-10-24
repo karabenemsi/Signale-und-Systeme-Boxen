@@ -22,3 +22,81 @@
 	\text{Für das Nennerpolynom } a(s) = 4s^3 + 3s^2 - 2s + 1 \text{ ist das Sytem instabil,}\\ \text{da der Koeffizient } a_1 = -2 < 0\\
 	\text{Für den Nenner}a(s) = 4s^3 + 3s^2 + 2s + 1 \text{ könnte das System stabil sein.}\\ \text{Es sind aber noch weitere Tests notwendig.}
 \end{abox}
+
+\setcounter{BoxCounter}{309}
+
+\begin{abox}
+	y(t) = H(\alpha) \cdot e^{\alpha t}
+\end{abox}
+
+\begin{abox}
+	y(t) &= h(t) \ast x(t) = h(t) \ast e^{\alpha t} = \int_{-\infty}^{\infty} h(\tau)e^{\alpha (t - \tau)} d\tau = e^{\alpha t}  \int_{-\infty}^{\infty} h(\tau)e^{-\alpha\tau}d\tau\\ 
+	&= e^{\alpha t}  \int_{-\infty}^{\infty} h(t')e^{-st'}dt' |_{s = \alpha}^{-\infty} = e^{\alpha t}\cdot H(\alpha)
+\end{abox}
+
+\begin{abox}
+	\mathcal{H}\{X_\mathbb{F}(f)e^{j2\pi ft}\} = H_\mathcal{F}(f) \cdot X_\mathcal{F}(f)e^{j2\pi ft}
+\end{abox}
+
+\begin{abox}
+	y(t) = \mathcal{H}\{\int_{-\infty}^{\infty}X_\mathcal{F}(f)e^{j2\pi ft}df\} = \int_{-\infty}^{\infty}\mathcal{H}\{X_\mathcal{F}(f)e^{j2\pi ft}df\} = \int_{-\infty}^{\infty}H_\mathcal{F}(f) \cdot X_\mathcal{F}e^{j2\pi ft}df
+\end{abox}
+
+\begin{abox}
+	X_\mathcal{F}(f) \cdot e^{j2\pi ft} &= \left|X_\mathcal{F}\right| \cdot e^{j\sphericalangle X_f(f)} \cdot e^{j2\pi ft} = \left|X_\mathcal{F}\right| \cdot e^{j(2\pi ft + \sphericalangle X_f(f))}\\
+	H_\mathcal{F}(f) &= \left|H_\mathcal{F}(f) \cdot e^{j\sphericalangle H_\mathcal{F}(f)}\right|\\
+	Y_\mathcal{F}(f) \cdot e^{j2\pi ft} &= H_\mathcal{F}(f) \cdot X_\mathcal{F}(f) \cdot e^{j2\pi ft} = \left|H_\mathcal{F}(f)\right| \cdot \left|X_\mathcal{F}(f)\right| \cdot e^{j(2\pi ft + \sphericalangle X_\mathcal{F}(f) + \sphericalangle H_\mathcal{F}(f))}
+\end{abox}
+
+\begin{abox}
+	H_\mathcal{F}(f) = H(s)|_{s = j2\pi f}
+\end{abox}
+
+\begin{abox}
+	\left|H_\mathcal{F}(f)\right| = \sqrt{(ReH_\mathcal{F}(f))^2 + (ImH_\mathcal{F}(f))^2}
+\end{abox}
+
+\begin{abox}
+	\phi(f):= \sphericalangle H_\mathcal{F}(f) = \overset{\sim}{\text{sgn}}(Im H_\mathcal{F}(f)) \cdot \arccos\frac{Re H_\mathcal{F}(f)}{\left|H_\mathcal{F}(f)\right|}
+\end{abox}
+
+\begin{abox}
+	H(f) = H(s)|_{s = j2\pi f} = \frac{K_p}{1 + j2\pi Tf} = \frac{K_p}{1 + j\frac{f}{f_g}} \text{ mit } f_g := \frac{1}{2\pi T}
+\end{abox}
+
+\begin{abox}
+	\left|H(f)\right| = \left|\frac{K_p}{1 + j\frac{f}{f_g}}\right| = \frac{\left|K_p\right|}{\sqrt{1 + (\frac{f}{f_g})^2}}
+\end{abox}
+
+\begin{abox}
+	H(f) = \frac{K_p \cdot (1 - j\frac{f}{f_g})}{(1 + j\frac{f}{f_g}) \cdot (1 - j\frac{f}{f_g})} = \frac{K_p}{1 + (\frac{f}{f_g})^2} \cdot \left(1 - j\frac{f}{f_g}\right)
+\end{abox}
+
+\begin{abox}
+	\phi(f) = \sphericalangle H(f) = \arctan(\frac{Im H(f)}{Re H(f)}) = \arctan \frac{-\frac{f}{f_g}}{1} = -\arctan(\frac{f}{f_g})
+\end{abox}
+
+\begin{abox}
+	\begin{tabular}{c | c c c}
+		f & 0 & $f_g$ & $\infty$\\\hline
+		$\left|H(f)\right|$ & $K_p$ & $\frac{K_p}{\sqrt{2}}$ & 0\\
+		$\sphericalangle H(f)$ & 0 & -$\frac{\pi}{4}$ & $-\frac{\pi}{2}$
+	\end{tabular}
+\end{abox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
