@@ -448,3 +448,46 @@
 	a) $ H(s) = \frac{1}{s+3} \cdot (s+2) \cdot \frac{1}{s} \cdot \frac{1}{s-1} \cdot \frac{1}{s+1} \cdot (s-5) = \frac{(s+2) \cdot (s-5)}{s(s-1)(s+1)(s+3)}$
 	b)$ H(s) = \frac{1}{s+3}\cdot \left(s+2+\frac{1}{s}\cdot \frac{s+1}{s+5}\right) = \frac{(s+2)(s+5)\cdot s + s+ 1}{(s+5)(s+3)\cdot s}$
 \end{tbox}
+
+\begin{abox}
+	\int_{-\infty}^{\infty} \left|h(t)\right|dt < \infty
+\end{abox}
+
+\begin{abox}
+	H(s) = \frac{1}{s - \lambda} \sLaplace e^{\lambda t}\epsilon(t) =: h(t)
+\end{abox}
+
+\begin{abox}
+	h(t) = e^{(\sigma + j\omega)t}\epsilon(t) = e^{\sigma t} \cdot e^{j\omega t} \cdot \epsilon(t)
+\end{abox}
+
+\begin{abox}
+	\int_{-\infty}^{\infty}\left|h(t)\right|dt &= \int_{-\infty}^{\infty}\left|e^{\sigma t}\right| \cdot \left|e^{j\omega t}\right| \cdot \left|\epsilon(t)\right| = \int_0^\infty e^{\sigma t} = \left[\frac{e^{\sigma t}}{\sigma}\right]_0^\infty\\ 
+	&= 0 - \frac{e^0}{\sigma} = -\frac{1}{\sigma} = \frac{1}{\left|\sigma\right|} < \infty
+\end{abox}
+
+\begin{abox}
+	\int_{-\infty}^{\infty}\left|h(t)\right|dt =  \int_0^\infty e^{\sigma t}dt = \infty
+\end{abox}
+
+\begin{abox}
+	H(s) = \frac{1}{(s-\lambda)^n} \sLaplace \frac{t^{n - 1}}{(n - 1)!}e^{\lambda t}\epsilon(t) =: h(t)
+\end{abox}
+
+\begin{abox}
+	h(t) = \frac{t^{n - 1}}{(n - 1)!} e^{j\omega t} \epsilon(t)
+\end{abox}
+
+\begin{abox}
+	H(s) &= \frac{b_M}{a_M} \cdot \frac{(s - \kappa_1)(s - \kappa_2)(s - \kappa_3)...(s - \kappa_M)}{(s - \lambda_1)(s - \lambda_2)(s - \lambda_3)...(s - \lambda_M)} = \sum_{i = 1}^{Q}\sum_{v = 1}^{n_i} \frac{A_{i, v}}{(s - \lambda_i)^v}\\
+	&\ztrans\\
+	h(t) &= \sum_{i = 1}^{Q}\sum_{v = 1}^{n_i} A_{i, v} \cdot \frac{t^{v - 1}}{(v - 1)!}e^{\lambda_i t}\epsilon(t)
+\end{abox}
+
+\begin{abox}
+	Re \lambda_i < 0 \text{ für alle } i = 1, 2, ..., N
+\end{abox}
+
+\begin{abox}
+	Re \lambda_i \ge 0 \text{ für ein } i = \{1, 2, ..., N\}
+\end{abox}
