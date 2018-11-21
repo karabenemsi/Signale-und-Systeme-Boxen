@@ -84,6 +84,84 @@
 	\end{tabular}
 \end{abox}
 
+\setcounter{BoxCounter}{340}
+
+\begin{abox}
+	H_{IP}(f) := T \cdot \rect(\frac{f}{2f_g^{IP}}) = T \cdot \rect(Tf) \sLaplace si(\pi\frac{t}{T}) =: h_{IP}(t)
+\end{abox}
+
+\begin{abox}
+	\overset{~}{X}(f) &= X_a(f) \cdot H_{IP}(f)\\
+	&\ztransrueck\\
+	\overset{~}{x}(t) &= x_a(t) \ast h_{IP}(t) = \left[\sum_{k = -\infty}^{\infty}x[k] \cdot \delta(t -kT)\right] \ast si(\pi\frac{t}{T}) = \sum_{k = -\infty}^{\infty}x[k] \cdot si(\pi\frac{t - kT}{T})
+\end{abox}
+
+\begin{abox}
+	\overset{~}{x}(kT) = x[k] = x(kT) \quad\forall k\in\mathbb{Z}
+\end{abox}
+
+\begin{abox}
+	X(f) = 0 \text{ für alle } f > f_g
+\end{abox}
+
+\begin{abox}
+	f_a > 2f_g
+\end{abox}
+
+\begin{abox}
+	x[k] = \frac{1}{\varDelta T}\int_{kT - \frac{\varDelta T}{2}}^{kT + \frac{\varDelta T}{2}}x(t)dt = x(t) \ast \frac{1}{\varDelta T}\rect(\frac{t}{\varDelta T})|_{t = kT}
+\end{abox}
+
+%\fontencoding{T2C}\selectfont
+
+\begin{abox}
+	x_a(t) &= \left[x(t) \ast \frac{1}{\varDelta T}\rect(\frac{t}{\varDelta T})\right] \cdot \KW_T(t)\\
+	&\ztrans\\
+	X_a(f) &= \left[X(f) \cdot si(\pi\varDelta Tf)\right] \ast\frac1T \KW_{\frac1T}(f)
+\end{abox}
+
+%\fontencoding{T1}\selectfont
+
+\begin{abox}
+	\frac{1}{\varDelta T} \overset{!}{\gg} \frac1T = f_a \text{ bzw. } \varDelta T \overset{!}{\ll} T
+\end{abox}
+
+\begin{abox}
+	x_{tr}(t) &= x_a(t) \ast \frac1T \rect(\frac{t}{T}) - \frac12)\\
+	&\ztrans\\
+	X_{tr}(f) &= X_a(f) \cdot si(\pi Tf) \cdot e^{-j\pi Tf}
+\end{abox}
+
+\begin{abox}
+	\frac1T > \frac{1}{2T} \overset{!}{\gg} f_g
+\end{abox}
+
+\begin{tbox}
+	$ f_g \approx \SI{20}{\kilo\hertz} $ (menschlicher Hörbereich) mit Abtastfrequenz $ f_a = \SI{44,1}{\kilo\hertz} $ $\rightarrow$ Übergangsbereich von $ f_g \approx \SI{20}{\kilo\hertz} $ bis $ f_a - f_g = \SI{24,1}{\kilo\hertz} $ d.h. relative Breite von $ \frac{\SI{24,1}{\kilo\hertz}}{\SI{20}{\kilo\hertz}} \approx 120\% $
+\end{tbox}
+
+\begin{abox}
+	X_a(f) = \frac1T \sum_{n = -\infty}^{\infty}X(f - \frac{n}{T})
+\end{abox}
+
+\begin{abox}
+	X_a(f) &\overset{(\#)}{=} \int_{-\infty}^{\infty}x_a(t)e^{-j2\pi ft}dt = \int_{-\infty}^{\infty}\sum_{k = -\infty}^{\infty}x[k]\delta(t - kT)e^{-j2\pi ft}dt\\
+	&= \sum_{k = -\infty}^{\infty}x[k]\int_{-\infty}^{\infty}\delta(t - kT)e^{-j2\pi ft}dt \overset{(\#\#)}{=} \sum_{k = -\infty}^{\infty}x[k]e^{-j2\pi fTk}\\
+	&= \sum_{k = -\infty}^{\infty}x[k]z^{-k}|_{z = e^{j2\pi ft}} \text{ (Z-Trafo von $x[k]$ an der Stelle $z = e^{j2\pi ft}$)}\\
+	&= X_z(z)|_{z = e^{j2\pi ft}} =: X_{\mathcal{F}_z}(f)
+\end{abox}
+
+\begin{abox}
+	\Omega := 2\pi\frac{f}{f_a} = 2\pi Tf
+\end{abox}
+
+\begin{abox}
+	X_{\mathcal{F}_z}(\Omega) := \mathcal{F}_z \{x[k]\} := \sum_{k' = -\infty}^{\infty}x[k]e^{-j\Omega k} = X_z(z)|_{z = e^{j\Omega}}
+\end{abox}
+
+\begin{abox}
+	\Omega := 2\pi Tf \text{ bzw. } \frac{d\Omega}{df} = 2\pi T
+\end{abox}
 
 
 
