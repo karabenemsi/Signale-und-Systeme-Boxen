@@ -24,7 +24,43 @@
 	\text{Für den Nenner}a(s) = 4s^3 + 3s^2 + 2s + 1 \text{ könnte das System stabil sein.}\\ \text{Es sind aber noch weitere Tests notwendig.}
 \end{abox}
 
-\setcounter{BoxCounter}{309}
+\setcounter{BoxCounter}{306}
+
+306
+
+\begin{abox}
+	H_1 &= \left|a_2\right| = a_2\\
+	H_2 &= \left|\begin{pmatrix}
+		a_2 & a_0\\
+		a_3 & a_1
+	\end{pmatrix}\right| = a_2a_1 - a_0a_3\\
+H_3 &= \left|H\right| = a_2a_1a_0 - a^2_0a_3
+\end{abox}
+
+\begin{tbox}
+	a) $ H(s) = \frac{7s^2 - 2s + 3}{2s^3 + 5s^2 + 4s + 1} $\\
+	Lösung: Für das Nennerpolynom gilt $ N = 3, a_3 = 2, a_2 = 5, a_1 = 4, a_0 = 1 $.\\
+	Nach Satz ?? testen wir:
+	\begin{align*}
+		a_i > 0 \forall i &= 0, 1, 2, 3\\
+		a_1a_2 - a_0a_3 &= 4 \cdot 5 - 1 \cdot 2 = 18 > 0
+	\end{align*}
+	also ist das System stabil.\\
+	b) $ H(s) = \frac{3s - 2}{s^5 + 3s^4 + 2s^3 + 3s^2 + 5s + 7} $\\
+	Lösung: Für das Nennerpolynom gilt $ N = 5, a_5 = 1, a_4 = 3, a_3 = 2, a_2 = 3, a_1 = 5, a_0 = 7$.\\
+	Wir testen:
+	\begin{align*}
+		&a_i > 0 \forall i = 0, 1, 2, 3, 4, 5\\
+		&a_3a_4 - a_2a_5 = 2 \cdot 3 - 3 \cdot 1 = 3 > 0\\
+		&(a_1a_2 - a_0a_3)(a_3a_4 - a_2a_5) - (a_1a_4 - a_0a_5)^2 = (5 \cdot 3 - 7 \cdot 2) \cdot 3 - (5 \cdot 3 - 7 \cdot 1)^2\\ 
+		&\quad = 3 - 64 = -61 < 0
+	\end{align*}
+	also ist das System instabil.
+\end{tbox}
+
+\begin{abox}
+	y(t) = H(\alpha) \cdot e^{\alpha t}
+\end{abox}
 
 \begin{abox}
 	y(t) = H(\alpha) \cdot e^{\alpha t}
@@ -85,7 +121,88 @@
 	\end{tabular}
 \end{abox}
 
-\setcounter{BoxCounter}{340}
+\begin{abox}
+	x(t) = A \cdot \cos(2\pi f_0t) \quad \left(= \frac{A}{2}(e^{j2\pi f_0t} + e^{-j2\pi f_0t})\right)
+\end{abox}
+
+\begin{abox}
+	y(t) &= \left|H(f_0)\right| \cdot A \cdot \cos(2\pi f_0t + \varphi(f_0))\\
+	&=  \left|H(f_0)\right| \cdot A \cdot \cos(2\pi f_0(t + \frac{\varphi(f_0)}{2\pi f_0})) = \left|H(f_0)\right| \cdot x(t - t_{ph})
+\end{abox}
+
+\begin{abox}
+	t_{ph}(f) := -\frac{\varphi(f)}{2\pi f}
+\end{abox}
+
+\begin{abox}
+	t_g(f) := -\frac{1}{2\pi f}\frac{d}{df}\varphi(f) = -\frac{1}{2\pi}\varphi'(f)
+\end{abox}
+
+\begin{abox}
+	t_{ph}(f) := -\frac{\varphi(f)}{2\pi f} = \frac{\arctan(\frac{f}{f_g})}{2\pi f}
+\end{abox}
+
+\begin{abox}
+	t_g(f) := -\frac{1}{2\pi f}\frac{d}{df}(-\arctan(2\pi Tf)) = \frac{T}{1 + (2\pi fT)^2} = \frac{1}{2\pi f_g}\cdot\frac{1}{1 + (\frac{f}{f_g})^2}
+\end{abox}
+
+\begin{tbox}
+	\begin{tabular}{c || c | c | c}
+		$f$ & 0 & $f_g$ & $\infty$\\\hline\hline
+		$t_{ph}(f)$ & $\frac{1}{2\pi f_g}$ & $\frac{1}{8f_g}$ & 0\\\hline
+		$t_g(f)$ &  $\frac{1}{2\pi f_g}$ & $\frac{1}{4\pi f_g}$ & 0
+	\end{tabular}
+\end{tbox}
+
+\begin{abox}
+	a(f) := 20 \log\left|H(f)\right| = 10 \log\left|H(f)\right|^2 \quad\text{in dB}
+\end{abox}
+
+\begin{abox}
+		a(f) = 20 \log\left|H(f)\right| = 10 \log\left|H(f)\right|^2 = 10\log\frac{\left|Y(f)\right|^2}{\left|X(f)\right|^2}
+\end{abox}
+
+\begin{abox}
+	a(f) &= 20\log\left|\frac{(s + 2)(s + 3)}{(s + 7)(s + 5)}\right|_{s = j2\pi f}\\
+	&= 20\log\left|s + 2\right| + 20\log\left|s + 3\right| - 20\log\left|s + 7\right| - 20\log\left|s + 5\right||_{s = j2\pi f}
+\end{abox}
+
+\begin{abox}
+	H_{TPf_g}(f) = \rect\left(\frac{f}{2f_g}\right)
+\end{abox}
+
+\begin{abox}
+	H_{HPf_g}(f) &= 1 - H_{TPf_g}(f),\\
+	H_{BPf_uf_o}(f) &= H_{TPf_o}(f) - H_{TPf_u}(f),\\
+	H_{BSf_uf_o}(f) &= 1 - H_{BPf_uf_o}(f)
+\end{abox}
+
+\begin{abox}
+	x[k] = x(t)|_{t = kT}, k\in\mathbb{Z}
+\end{abox}
+
+\begin{abox}
+	f_a = \frac1T
+\end{abox}
+
+\begin{abox}
+	\KW_T(t) := \sum_{k = -\infty}^{\infty}\delta(t - kT)
+\end{abox}
+
+\begin{abox}
+	x_a(t) := x(t) \cdot \KW_T(t)
+\end{abox}
+
+\begin{abox}
+	x_a(t) &= x(t) \cdot \KW_T(t) = \sum_{k = -\infty}^{\infty}x(kT)\cdot \delta(t - kT) = \sum_{k = -\infty}^{\infty}x[k] \cdot \delta(t - kT)\\
+	&\ztrans \mathcal{F}\\
+	X_a(f) &= X(f) \ast \frac1T\KW_{1/T}(f) = X(f) \ast \left(\frac1T\sum_{k = -\infty}^{\infty}\delta(f - \frac{k}{T})\right)\\
+	&= \frac1T \sum_{k = -\infty}^{\infty}X(f)\ast\delta(f - \frac{k}{T}) = \frac1T\sum_{k = -\infty}^{\infty}X(f - \frac{k}{T})
+\end{abox}
+
+\begin{abox}
+	x_a(t) := x(t) \cdot \KW_T(t) \slaplace X_a(f) = \frac1T\sum_{k = -\infty}^{\infty}F(f - \frac{k}{T})
+\end{abox}
 
 \begin{abox}
 	H_{IP}(f) := T \cdot \rect(\frac{f}{2f_g^{IP}}) = T \cdot \rect(Tf) \sLaplace si(\pi\frac{t}{T}) =: h_{IP}(t)
